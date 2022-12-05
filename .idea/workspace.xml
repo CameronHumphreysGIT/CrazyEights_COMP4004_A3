@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2438256d-87bb-49a9-b89b-7f1640c5e2be" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/WebSocketConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Tester.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CrazyEightsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CrazyEightsApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,10 +78,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="872" y="359" key="#Project_Structure" timestamp="1670256939685">
+    <state x="872" y="359" key="#Project_Structure" timestamp="1670258238179">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="872" y="359" key="#Project_Structure/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670256939685" />
+    <state x="872" y="359" key="#Project_Structure/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670258238179" />
     <state x="1060" y="456" key="FileChooserDialogImpl" timestamp="1670256812005">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -106,5 +106,9 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="760" y="275" key="SettingsEditor/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670257624642" />
+    <state x="927" y="316" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1670258348311">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="927" y="316" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670258348311" />
   </component>
 </project>
