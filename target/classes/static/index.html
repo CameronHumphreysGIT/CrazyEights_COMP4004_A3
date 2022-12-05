@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Crazy Eights</title>
+        <title id="title">Crazy Eights Welcome</title>
+        <script src="/webjars/jquery/jquery.min.js"></script>
+        <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+        <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+        <script src="/welcome.js"></script>
     </head>
     <form class="form-inline">
         <div class="form-group">
             <label for="name">What is your name?</label>
             <input type="text" id="name" class="form-control" placeholder="Your name here...">
         </div>
-        <button href="game" id="send" class="btn btn-default" type="submit">Connect</button>
+        <button id="join" class="btn btn-default" type="submit">Join</button>
     </form>
 </html>

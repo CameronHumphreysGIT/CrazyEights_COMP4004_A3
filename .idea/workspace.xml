@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2438256d-87bb-49a9-b89b-7f1640c5e2be" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/Tester.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/GameController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/Greeting.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/Messages/HelloMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/game.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/game.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/welcome.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/WebDriverLibrary.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Tester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tester.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,13 +40,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../COMP3004/quest-project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../COMP3004/Project" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.CrazyEightsApplication">
     <configuration name="CrazyEightsApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.CrazyEightsApplication" />
       <module name="HumphreysCameron101162528A3" />
@@ -46,8 +54,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Tester" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HumphreysCameron101162528A3" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Tester" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.Tester" />
         <item itemvalue="Application.CrazyEightsApplication" />
       </list>
     </recent_temporary>
@@ -82,26 +100,30 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="872" y="359" key="#Project_Structure/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670258238179" />
-    <state x="1060" y="456" key="FileChooserDialogImpl" timestamp="1670256812005">
+    <state x="1085" y="402" key="#com.intellij.ide.util.MemberChooser" timestamp="1670265525463">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1060" y="456" key="FileChooserDialogImpl/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670256812005" />
-    <state width="2517" height="353" key="GridCell.Tab.0.bottom" timestamp="1670257787981">
+    <state x="1085" y="402" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670265525463" />
+    <state x="1060" y="456" key="FileChooserDialogImpl" timestamp="1670261225914">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="353" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670257787981" />
-    <state width="2517" height="353" key="GridCell.Tab.0.center" timestamp="1670257787980">
+    <state x="1060" y="456" key="FileChooserDialogImpl/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670261225914" />
+    <state width="2517" height="881" key="GridCell.Tab.0.bottom" timestamp="1670265764742">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="353" key="GridCell.Tab.0.center/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670257787980" />
-    <state width="2517" height="353" key="GridCell.Tab.0.left" timestamp="1670257787980">
+    <state width="2517" height="881" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670265764742" />
+    <state width="2517" height="881" key="GridCell.Tab.0.center" timestamp="1670265764741">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="353" key="GridCell.Tab.0.left/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670257787980" />
-    <state width="2517" height="353" key="GridCell.Tab.0.right" timestamp="1670257787980">
+    <state width="2517" height="881" key="GridCell.Tab.0.center/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670265764741" />
+    <state width="2517" height="881" key="GridCell.Tab.0.left" timestamp="1670265764741">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="353" key="GridCell.Tab.0.right/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670257787980" />
+    <state width="2517" height="881" key="GridCell.Tab.0.left/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670265764741" />
+    <state width="2517" height="881" key="GridCell.Tab.0.right" timestamp="1670265764741">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="881" key="GridCell.Tab.0.right/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670265764741" />
     <state x="760" y="275" key="SettingsEditor" timestamp="1670257624642">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
