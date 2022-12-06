@@ -10,7 +10,7 @@ function connect() {
 }
 
 function send() {
-    stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
+    stompClient.send("/app/hello", {}, JSON.stringify({'response': $("#name").val()}));
     location.href='game.html';
 }
 
