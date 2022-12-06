@@ -101,6 +101,28 @@ class Tester {
             driver3.close();
             driver4.close();
         }
+        @Test
+        @DisplayName("GameTest")
+        void GameTest() {
+            //three players join
+            WebDriver driver1 = playerJoin("Cameron", 1);
+            WebDriver driver2 = playerJoin("Mike", 2);
+            WebDriver driver3 = playerJoin("Ross", 3);
+            driver1.findElement(By.id("No")).click();
+            try {
+                Thread.sleep(100);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            assertEquals("In Game, Round 1, Player 1's Turn", driver1.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round 1, Player 1's Turn", driver2.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round 1, Player 1's Turn", driver3.findElement(By.id("status")).getText());
+            // deck should be 52 - 21 = 31
+            assertEquals("31", driver1.findElement(By.id("deck")).getText());
+            assertEquals("31", driver2.findElement(By.id("deck")).getText());
+            assertEquals("31", driver3.findElement(By.id("deck")).getText());
+            //that's all while i still can't rig the game.
+        }
     }
     //helpers
     WebDriver playerJoin(String name, int num) {

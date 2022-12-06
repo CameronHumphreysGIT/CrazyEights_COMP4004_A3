@@ -2,29 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2438256d-87bb-49a9-b89b-7f1640c5e2be" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/Messages/ResponseMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/Messages/StatusMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Greeting.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Messages/HelloMessage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/game.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/game.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/welcome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/welcome.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Tester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/Tester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/WebDriverLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/WebDriverLibrary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/GameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Greeting.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Messages/HelloMessage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/game.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/game.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/welcome.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/welcome.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Tester$ConnectionTests.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Tester.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/WebDriverLibrary.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/Tester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/Tester.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
