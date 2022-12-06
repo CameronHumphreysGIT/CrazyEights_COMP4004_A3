@@ -27,8 +27,12 @@ function showWelcome(message) {
 }
 
 function showStatus(message) {
-    if (message.content === "game"){
-        $("#status").html("In Game");
+    if (message.content === "1"){
+        $("#status").html("In Game, Round" + message.content + ", Player" + message.content + "'s turn");
+        stompClient.send("/app/" + number, {}, JSON.stringify({}));
+        stompClient.subscribe('/topic/' + number, function (message) {
+           showGame(JSON.parse(message.body));
+        });
     } else if (message.players === 2 && number === 1 && !(response)) {
         $("#status").html("Three total players, would you like to wait for another?");
         //add yes and no buttons
@@ -55,5 +59,17 @@ function showStatus(message) {
     }else {
         $("#status").html("Waiting..." + message.players + " other players");
     }
+}
+
+function showGame(message) {
+    $("#cards").append('<p id="card1">' + message.cards[0] + '</p>');
+    $("#cards").append('<p id="card2">' + message.cards[1] + '</p>');
+    $("#cards").append('<p id="card3">' + message.cards[2] + '</p>');
+    $("#cards").append('<p id="card4">' + message.cards[3] + '</p>');
+    $("#cards").append('<p id="card5">' + message.cards[4] + '</p>');
+    $("#cards").append('<p id="card6">' + message.cards[5] + '</p>');
+    $("#cards").append('<p id="card7">' + message.cards[6] + '</p>');
+    $("#deck").html(message.deckCount);
+    $("#topCard").html(message.topCard);
 }
 

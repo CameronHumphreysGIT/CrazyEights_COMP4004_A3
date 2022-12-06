@@ -1,5 +1,6 @@
 package com;
 
+import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
@@ -25,7 +26,8 @@ public class GameController {
         Thread.sleep(500);
         System.out.println("got response from p1");
         if (rm.getResponse().equals("No")) {
-            return new StatusMessage("game", g.playerCount() - 1);
+            g.startRound();
+            return new StatusMessage("1", g.playerCount() - 1);
         }else {
             return new StatusMessage("", g.playerCount() - 1);
         }
@@ -37,9 +39,17 @@ public class GameController {
         Thread.sleep(500);
         System.out.println("sending status to a player");
         if (g.playerCount() == 4) {
-            return new StatusMessage("game", g.playerCount() - 1);
+            g.startRound();
+            return new StatusMessage("1", g.playerCount() - 1);
         }
         return new StatusMessage("", g.playerCount() - 1);
+    }
+
+    @MessageMapping("/{playerId}")
+    @SendTo("/topic/{playerId}")
+    public GameMessage game1(@DestinationVariable("playerId") int pId, ResponseMessage rm) throws Exception {
+        //give it the game object, it'll set everything else
+        return new GameMessage(g, pId);
     }
 
     public void setG(Game g) {

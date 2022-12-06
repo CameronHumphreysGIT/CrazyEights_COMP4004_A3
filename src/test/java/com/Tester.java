@@ -110,18 +110,22 @@ class Tester {
             WebDriver driver3 = playerJoin("Ross", 3);
             driver1.findElement(By.id("No")).click();
             try {
-                Thread.sleep(100);
+                Thread.sleep(3000);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-            assertEquals("In Game, Round 1, Player 1's Turn", driver1.findElement(By.id("status")).getText());
-            assertEquals("In Game, Round 1, Player 1's Turn", driver2.findElement(By.id("status")).getText());
-            assertEquals("In Game, Round 1, Player 1's Turn", driver3.findElement(By.id("status")).getText());
-            // deck should be 52 - 21 = 31
-            assertEquals("31", driver1.findElement(By.id("deck")).getText());
-            assertEquals("31", driver2.findElement(By.id("deck")).getText());
-            assertEquals("31", driver3.findElement(By.id("deck")).getText());
+            assertEquals("In Game, Round1, Player1's turn", driver1.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn", driver2.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn", driver3.findElement(By.id("status")).getText());
+            // deck should be 52 - 21 = 31 - 1 for topcard
+            assertEquals("30", driver1.findElement(By.id("deck")).getText());
+            assertEquals("30", driver2.findElement(By.id("deck")).getText());
+            assertEquals("30", driver3.findElement(By.id("deck")).getText());
             //that's all while i still can't rig the game.
+            //teardown
+            driver1.close();
+            driver2.close();
+            driver3.close();
         }
     }
     //helpers
