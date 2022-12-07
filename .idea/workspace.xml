@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2438256d-87bb-49a9-b89b-7f1640c5e2be" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/Deck.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/Messages/GameMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/game.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/game.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/Tester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/Tester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/GameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/game.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/game.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/Tester$ConnectionTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/Tester$ConnectionTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/Tester.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/Tester.class" afterDir="false" />
-    </list>
+    <list default="true" id="2438256d-87bb-49a9-b89b-7f1640c5e2be" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,10 +35,14 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
       <recent name="com" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
   </component>
-  <component name="RunManager" selected="JUnit.Tester$ConnectionTests.GameTest">
+  <component name="RunManager" selected="JUnit.Tester">
     <configuration name="CrazyEightsApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.CrazyEightsApplication" />
       <module name="HumphreysCameron101162528A3" />
@@ -63,32 +50,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tester$ConnectionTests.FourPlayerJoinTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="HumphreysCameron101162528A3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com" />
-      <option name="MAIN_CLASS_NAME" value="com.Tester$ConnectionTests" />
-      <option name="METHOD_NAME" value="FourPlayerJoinTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Tester$ConnectionTests.GameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="HumphreysCameron101162528A3" />
+      <module name="CrazyEights_COMP4004_A3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.*" />
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com" />
-      <option name="MAIN_CLASS_NAME" value="com.Tester$ConnectionTests" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Tester$ConnectionTests" />
       <option name="METHOD_NAME" value="GameTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -96,44 +67,53 @@
       </method>
     </configuration>
     <configuration name="Tester$ConnectionTests.PlayerJoinTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="HumphreysCameron101162528A3" />
+      <module name="CrazyEights_COMP4004_A3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.*" />
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com" />
-      <option name="MAIN_CLASS_NAME" value="com.Tester$ConnectionTests" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Tester$ConnectionTests" />
       <option name="METHOD_NAME" value="PlayerJoinTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tester$ConnectionTests.ThreePlayerJoinTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="HumphreysCameron101162528A3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com" />
-      <option name="MAIN_CLASS_NAME" value="com.Tester$ConnectionTests" />
+    <configuration name="Tester$ConnectionTests.ThreePlayerJoinTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CrazyEights_COMP4004_A3" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Tester$ConnectionTests" />
       <option name="METHOD_NAME" value="ThreePlayerJoinTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Tester" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CrazyEights_COMP4004_A3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value=".*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Tester" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.Tester" />
+        <item itemvalue="JUnit.Tester$ConnectionTests.ThreePlayerJoinTest" />
         <item itemvalue="JUnit.Tester$ConnectionTests.GameTest" />
         <item itemvalue="Application.CrazyEightsApplication" />
         <item itemvalue="JUnit.Tester$ConnectionTests.PlayerJoinTest" />
-        <item itemvalue="JUnit.Tester$ConnectionTests.FourPlayerJoinTest" />
-        <item itemvalue="JUnit.Tester$ConnectionTests.ThreePlayerJoinTest (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -171,33 +151,42 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1085" y="402" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670291155289" />
-    <state x="1076" y="560" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1670284743124">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="646" y="330" width="403" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1670438326187">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="646" y="330" width="403" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1670438326187" />
     <state x="1076" y="560" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670284743124" />
     <state x="1010" y="448" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1670275092692">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1010" y="448" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670275092692" />
+    <state x="499" y="160" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1670438183336">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="160" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1536.824@0.0.1536.824" timestamp="1670438183336" />
     <state x="1060" y="456" key="FileChooserDialogImpl" timestamp="1670261225914">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1060" y="456" key="FileChooserDialogImpl/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670261225914" />
-    <state width="2517" height="506" key="GridCell.Tab.0.bottom" timestamp="1670292642771">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1493" height="127" key="GridCell.Tab.0.bottom" timestamp="1670439329223">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1493" height="127" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1670439329223" />
     <state width="2517" height="506" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670292642771" />
-    <state width="2517" height="506" key="GridCell.Tab.0.center" timestamp="1670292642771">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1493" height="127" key="GridCell.Tab.0.center" timestamp="1670439329223">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1493" height="127" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1670439329223" />
     <state width="2517" height="506" key="GridCell.Tab.0.center/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670292642771" />
-    <state width="2517" height="506" key="GridCell.Tab.0.left" timestamp="1670292642771">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1493" height="127" key="GridCell.Tab.0.left" timestamp="1670439329223">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1493" height="127" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1670439329223" />
     <state width="2517" height="506" key="GridCell.Tab.0.left/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670292642771" />
-    <state width="2517" height="506" key="GridCell.Tab.0.right" timestamp="1670292642771">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1493" height="127" key="GridCell.Tab.0.right" timestamp="1670439329223">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1493" height="127" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1670439329223" />
     <state width="2517" height="506" key="GridCell.Tab.0.right/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670292642771" />
     <state width="2517" height="502" key="GridCell.Tab.1.bottom" timestamp="1670274392038">
       <screen x="0" y="0" width="2560" height="1400" />

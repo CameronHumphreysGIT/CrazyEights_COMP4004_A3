@@ -1,28 +1,38 @@
-package com;
+import com.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest(classes= CrazyEightsApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ExtendWith(SpringExtension.class)
 class Tester {
+    @Autowired
+    GameController gc;
+
+    @LocalServerPort
+    private int port;
 
     @Nested
     @DisplayName("ConnectionTests")
     class ConnectionTests {
         @Test
         @DisplayName("PlayerJoinTest")
-        void PlayerJoinTest() {
+        void PlayerJoinTest() throws InterruptedException {
             //helper does test for us now
             WebDriver driver = playerJoin("Cameron", 1);
             //teardown
             driver.close();
+            //reset the game object for the next test
+            gc.reset();
         }
         @Test
         @DisplayName("ThreePlayerJoinTest")
@@ -52,17 +62,15 @@ class Tester {
             }  catch(Exception e) {
                 System.out.println(e.getMessage());
             }
-            assertEquals("In Game", driver2.findElement(By.id("status")).getText());
-            try {
-                Thread.sleep(1000);
-            }  catch(Exception e) {
-                System.out.println(e.getMessage());
-            }
-            assertEquals("In Game", driver3.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn", driver1.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn", driver2.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn", driver3.findElement(By.id("status")).getText());
             //teardown
             driver1.close();
             driver2.close();
             driver3.close();
+            //reset the game object for the next test
+            gc.reset();
         }
         @Test
         @DisplayName("FourPlayerJoinTest")
@@ -90,16 +98,18 @@ class Tester {
             assertEquals("Waiting...2 other players", driver2.findElement(By.id("status")).getText());
             assertEquals("Waiting...2 other players", driver3.findElement(By.id("status")).getText());
             WebDriver driver4 = playerJoin("Hans", 4);
-            assertEquals("In Game", driver1.findElement(By.id("status")).getText());
-            assertEquals("In Game", driver2.findElement(By.id("status")).getText());
-            assertEquals("In Game", driver3.findElement(By.id("status")).getText());
-            assertEquals("In Game", driver4.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn", driver1.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn", driver2.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn", driver3.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn", driver4.findElement(By.id("status")).getText());
 
             //teardown
             driver1.close();
             driver2.close();
             driver3.close();
             driver4.close();
+            //reset the game object for the next test
+            gc.reset();
         }
         @Test
         @DisplayName("GameTest")
@@ -126,6 +136,8 @@ class Tester {
             driver1.close();
             driver2.close();
             driver3.close();
+            //reset the game object for the next test
+            gc.reset();
         }
     }
     //helpers
@@ -133,7 +145,7 @@ class Tester {
         //fixture
         WebDriverLibrary wdl = new WebDriverLibrary();
         WebDriver driver = wdl.getChromeDriver();
-        driver.get("http://localhost:8080");
+        driver.get("http://localhost:" + port);
 
         try {
             Thread.sleep(2000);
@@ -160,7 +172,7 @@ class Tester {
             System.out.println(e.getMessage());
         }
         //make sure we are now on the game page
-        assertEquals("http://localhost:8080/game.html", driver.getCurrentUrl());
+        assertEquals("http://localhost:" + port + "/game.html", driver.getCurrentUrl());
         //make sure it says my name and player number
         assertEquals("Welcome " + name + " to Crazy Eights, you are Player" + num, driver.findElement(By.id("welcome")).getText());
         return driver;

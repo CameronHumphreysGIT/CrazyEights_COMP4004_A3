@@ -52,7 +52,8 @@ public class GameController {
         return new GameMessage(g, pId);
     }
 
-    public void setG(Game g) {
-        this.g = g;
+    public void reset()
+    {
+        this.g = new Game();
     }
 }
