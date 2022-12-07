@@ -28,7 +28,7 @@ function showWelcome(message) {
 
 function showStatus(message) {
     if (message.content === "1"){
-        $("#status").html("In Game, Round" + message.content + ", Player" + message.content + "'s turn");
+        $("#status").html("In Game, Round" + message.content + ", Player" + message.content + "'s turn " + "turn order: left(incrementing), next: 2");
         stompClient.send("/app/" + number, {}, JSON.stringify({}));
         stompClient.subscribe('/topic/' + number, function (message) {
            showGame(JSON.parse(message.body));

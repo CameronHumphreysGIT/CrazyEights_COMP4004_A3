@@ -62,9 +62,9 @@ class Tester {
             }  catch(Exception e) {
                 System.out.println(e.getMessage());
             }
-            assertEquals("In Game, Round1, Player1's turn", driver1.findElement(By.id("status")).getText());
-            assertEquals("In Game, Round1, Player1's turn", driver2.findElement(By.id("status")).getText());
-            assertEquals("In Game, Round1, Player1's turn", driver3.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn turn order: left(incrementing), next: 2", driver1.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn turn order: left(incrementing), next: 2", driver2.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn turn order: left(incrementing), next: 2", driver3.findElement(By.id("status")).getText());
             //teardown
             driver1.close();
             driver2.close();
@@ -98,10 +98,10 @@ class Tester {
             assertEquals("Waiting...2 other players", driver2.findElement(By.id("status")).getText());
             assertEquals("Waiting...2 other players", driver3.findElement(By.id("status")).getText());
             WebDriver driver4 = playerJoin("Hans", 4);
-            assertEquals("In Game, Round1, Player1's turn", driver1.findElement(By.id("status")).getText());
-            assertEquals("In Game, Round1, Player1's turn", driver2.findElement(By.id("status")).getText());
-            assertEquals("In Game, Round1, Player1's turn", driver3.findElement(By.id("status")).getText());
-            assertEquals("In Game, Round1, Player1's turn", driver4.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn turn order: left(incrementing), next: 2", driver1.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn turn order: left(incrementing), next: 2", driver2.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn turn order: left(incrementing), next: 2", driver3.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn turn order: left(incrementing), next: 2", driver4.findElement(By.id("status")).getText());
 
             //teardown
             driver1.close();
@@ -124,13 +124,13 @@ class Tester {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-            assertEquals("In Game, Round1, Player1's turn", driver1.findElement(By.id("status")).getText());
-            assertEquals("In Game, Round1, Player1's turn", driver2.findElement(By.id("status")).getText());
-            assertEquals("In Game, Round1, Player1's turn", driver3.findElement(By.id("status")).getText());
-            // deck should be 52 - 21 = 31 - 1 for topcard
-            assertEquals("30", driver1.findElement(By.id("deck")).getText());
-            assertEquals("30", driver2.findElement(By.id("deck")).getText());
-            assertEquals("30", driver3.findElement(By.id("deck")).getText());
+            assertEquals("In Game, Round1, Player1's turn turn order: left(incrementing), next: 2", driver1.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn turn order: left(incrementing), next: 2", driver2.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn turn order: left(incrementing), next: 2", driver3.findElement(By.id("status")).getText());
+            // deck should be 52 - 15 = 37 - 1 for topcard
+            assertEquals("36", driver1.findElement(By.id("deck")).getText());
+            assertEquals("36", driver2.findElement(By.id("deck")).getText());
+            assertEquals("36", driver3.findElement(By.id("deck")).getText());
             //that's all while i still can't rig the game.
             //teardown
             driver1.close();

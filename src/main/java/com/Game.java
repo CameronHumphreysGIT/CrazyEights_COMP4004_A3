@@ -10,7 +10,7 @@ public class Game {
     String topCard;
     int currentTurn;
     int round = 0;
-    public final int MAX_HAND = 7;
+    public final int MAX_HAND = 5;
 
     public Game() {
     }

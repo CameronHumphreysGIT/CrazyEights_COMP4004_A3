@@ -28,7 +28,7 @@ function showWelcome(message) {
 
 function showStatus(message) {
     if (message.content === "1"){
-        $("#status").html("In Game, Round" + message.content + ", Player" + message.content + "'s turn");
+        $("#status").html("In Game, Round" + message.content + ", Player" + message.content + "'s turn " + "turn order: left(incrementing), next: 2");
         stompClient.send("/app/" + number, {}, JSON.stringify({}));
         stompClient.subscribe('/topic/' + number, function (message) {
            showGame(JSON.parse(message.body));
@@ -67,8 +67,6 @@ function showGame(message) {
     $("#cards").append('<p id="card3">' + message.cards[2] + '</p>');
     $("#cards").append('<p id="card4">' + message.cards[3] + '</p>');
     $("#cards").append('<p id="card5">' + message.cards[4] + '</p>');
-    $("#cards").append('<p id="card6">' + message.cards[5] + '</p>');
-    $("#cards").append('<p id="card7">' + message.cards[6] + '</p>');
     $("#deck").html(message.deckCount);
     $("#topCard").html(message.topCard);
 }
