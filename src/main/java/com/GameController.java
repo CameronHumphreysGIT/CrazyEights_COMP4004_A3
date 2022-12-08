@@ -1,8 +1,10 @@
 package com;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.stereotype.Controller;
 import com.Messages.*;
 
@@ -10,6 +12,14 @@ import java.util.ArrayList;
 
 @Controller
 public class GameController {
+
+    private static SimpMessageSendingOperations messagingTemplate;
+
+    @Autowired
+    public GameController(SimpMessageSendingOperations messagingTemplate) {
+        this.messagingTemplate = messagingTemplate;
+    }
+
     Game g = new Game();
     @MessageMapping("/hello")
     @SendTo("/topic/welcome")
@@ -78,5 +88,16 @@ public class GameController {
     }
     public void setTopCard(String card) {
         g.setTopCard(card);
+    }
+    public void refresh() {
+        //go through and send a refresh to each player.
+        for (int i = 1; i <= g.playerCount(); i++) {
+            //send an update message to whoever is current turn
+            if (i == g.getCurrentTurn()) {
+                GameController.messagingTemplate.convertAndSend(("/topic/" + i), new UpdateMessage(g, i));
+            }else {
+                GameController.messagingTemplate.convertAndSend(("/topic/" + i), new StartMessage(g, i));
+            }
+        }
     }
 }

@@ -118,9 +118,9 @@ class Tester {
             WebDriver driver3 = playerJoin("Ross", 3);
             driver1.findElement(By.id("No")).click();
             myWait(3.0);
-            assertEquals("In Game, Round1, Player1's turn turn order: left(incrementing), next: 2", driver1.findElement(By.id("status")).getText());
-            assertEquals("In Game, Round1, Player1's turn turn order: left(incrementing), next: 2", driver2.findElement(By.id("status")).getText());
-            assertEquals("In Game, Round1, Player1's turn turn order: left(incrementing), next: 2", driver3.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn turn order:left(incrementing), next: 2", driver1.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn turn order:left(incrementing), next: 2", driver2.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn turn order:left(incrementing), next: 2", driver3.findElement(By.id("status")).getText());
             // deck should be 52 - 15 = 37 - 1 for topcard
             assertEquals("36", driver1.findElement(By.id("deck")).getText());
             assertEquals("36", driver2.findElement(By.id("deck")).getText());
@@ -142,10 +142,10 @@ class Tester {
         void FortyOneTest() {
             //have four players join
             WebDriver[] drivers = fourPlayersJoin(new String[] {"Cam", "Matt", "Alexander", "Cierra"});
-            //set player 1's cards
-            gc.setCards(new ArrayList<>(Arrays.asList("5H", "KD", "3C", "9S", "JD")));
             //set the top card so we can play 3C
-            gc.setTop("6C");
+            gc.setTopCard("6C");
+            gc.setCards(new ArrayList<>(Arrays.asList("5H", "KD", "3C", "9S", "JD")), 1);
+            gc.refresh();
             //check that it's playable
             assertNotEquals(0, drivers[0].findElement(By.xpath("//button[text()='3C']")).getSize());
             //then, play that card:
@@ -156,10 +156,10 @@ class Tester {
             assertEquals("3C", drivers[2].findElement(By.id("topCard")).getText());
             assertEquals("3C", drivers[3].findElement(By.id("topCard")).getText());
             //check that the player has changed to player 2
-            assertEquals("In Game, Round1, Player2's turn turn order: left(incrementing), next: 3", drivers[0].findElement(By.id("status")).getText());
-            assertEquals("In Game, Round1, Player2's turn turn order: left(incrementing), next: 3", drivers[1].findElement(By.id("status")).getText());
-            assertEquals("In Game, Round1, Player2's turn turn order: left(incrementing), next: 3", drivers[2].findElement(By.id("status")).getText());
-            assertEquals("In Game, Round1, Player2's turn turn order: left(incrementing), next: 3", drivers[3].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player2's turn turn order:left(incrementing), next: 3", drivers[0].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player2's turn turn order:left(incrementing), next: 3", drivers[1].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player2's turn turn order:left(incrementing), next: 3", drivers[2].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player2's turn turn order:left(incrementing), next: 3", drivers[3].findElement(By.id("status")).getText());
             //good stuff.
             //teardown
             drivers[0].close();
@@ -201,9 +201,15 @@ class Tester {
             drivers[i].findElement(By.id("name")).sendKeys(names[i]);
             myWait(0.5);
             drivers[i].findElement(By.id("join")).click();
+            if (i == 2) {
+                myWait(3);
+                //added second player, click yes on player1 before cont
+                drivers[0].findElement(By.id("Yes")).click();
+            }
             //it'll change pages
         }
-        //good to go lol
+        //wait for last guy to change pages
+        myWait(3);
         return drivers;
     }
     void myWait(double seconds) {
