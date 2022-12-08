@@ -168,6 +168,50 @@ class Tester {
             drivers[3].close();
             gc.reset();
         }
+        @Test
+        @DisplayName("42Test")
+        void FortyTwoTest() {
+            //have four players join
+            WebDriver[] drivers = fourPlayersJoin(new String[] {"Cam", "Matt", "Alexander", "Cierra"});
+            //set the top card so we can play AH
+            gc.setTopCard("6H");
+            gc.setCards(new ArrayList<>(Arrays.asList("5H", "AH", "3C", "9S", "JD")), 1);
+            gc.refresh();
+            //check that it's playable
+            assertNotEquals(0, drivers[0].findElement(By.xpath("//button[text()='AH']")).getSize());
+            //then, play that card:
+            drivers[0].findElement(By.xpath("//button[text()='AH']")).click();
+            //check that we changed the top card
+            assertEquals("AH", drivers[0].findElement(By.id("topCard")).getText());
+            assertEquals("AH", drivers[1].findElement(By.id("topCard")).getText());
+            assertEquals("AH", drivers[2].findElement(By.id("topCard")).getText());
+            assertEquals("AH", drivers[3].findElement(By.id("topCard")).getText());
+            //check that the player has changed to player 4 (reverse card)
+            assertEquals("In Game, Round1, Player4's turn turn order:right(incrementing), next: 3", drivers[0].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player4's turn turn order:right(incrementing), next: 3", drivers[1].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player4's turn turn order:right(incrementing), next: 3", drivers[2].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player4's turn turn order:right(incrementing), next: 3", drivers[3].findElement(By.id("status")).getText());
+            //good stuff.
+            //set player 4's cards
+            gc.setCards(new ArrayList<>(Arrays.asList("7H", "AD", "3C", "9S", "JD")), 4);
+            gc.refresh();
+            //make them play it:
+            //check that it's playable
+            assertNotEquals(0, drivers[0].findElement(By.xpath("//button[text()='7H']")).getSize());
+            //then, play that card:
+            drivers[0].findElement(By.xpath("//button[text()='7H']")).click();
+            //check next player
+            assertEquals("In Game, Round1, Player3's turn turn order:right(incrementing), next: 2", drivers[0].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player3's turn turn order:right(incrementing), next: 2", drivers[1].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player3's turn turn order:right(incrementing), next: 2", drivers[2].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player3's turn turn order:right(incrementing), next: 2", drivers[3].findElement(By.id("status")).getText());
+            //teardown
+            drivers[0].close();
+            drivers[1].close();
+            drivers[2].close();
+            drivers[3].close();
+            gc.reset();
+        }
     }
     //helpers
     WebDriver playerJoin(String name, int num) {
