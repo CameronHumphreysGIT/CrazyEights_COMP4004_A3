@@ -13,6 +13,10 @@ public class Player {
         this.number = number;
     }
 
+    public void discard(String card) {
+        cards.remove(card);
+    }
+
     public void deal(String c) {
         cards.add(c);
     }
@@ -27,5 +31,9 @@ public class Player {
 
     public ArrayList<String> getCards() {
         return cards;
+    }
+
+    public void setCards(ArrayList<String> cards) {
+        this.cards = cards;
     }
 }

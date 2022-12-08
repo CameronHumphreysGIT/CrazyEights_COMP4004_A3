@@ -10,6 +10,7 @@ public class Game {
     String topCard;
     int currentTurn;
     int round = 0;
+    boolean isLeft = true;
     public final int MAX_HAND = 5;
 
     public Game() {
@@ -18,6 +19,10 @@ public class Game {
     public void startRound() {
         round++;
         currentTurn = round;
+        //empty every player's hand
+        for (Player p : playerList) {
+            p.setCards(new ArrayList<String>());
+        }
         //deal cards to players
         for (int i =0; i < MAX_HAND; i++) {
             for (int j =0; j < playerList.size(); j++) {
@@ -25,6 +30,24 @@ public class Game {
             }
         }
         topCard = deck.dealCard();
+    }
+
+    public boolean isPlayable(String card) {
+        //check if the card is currently playable
+        if (card.charAt(0) == '8') {
+            return true;
+        }
+        //same suit, use card.length since sometimes we have 10's
+        return (card.charAt(card.length() - 1) == topCard.charAt(topCard.length() - 1));
+    }
+
+    public void play(String card, int player) {
+        //player played a card.
+        topCard = card;
+        //take it out of their hand.
+        playerList.get(player - 1).discard(card);
+        //increment turn
+        currentTurn++;
     }
 
     public void addPlayer(Player p) {
@@ -35,8 +58,26 @@ public class Game {
         return playerList.size();
     }
 
+    public int nextTurn() {
+        //TODO update later
+        return currentTurn + 1;
+    }
+
     public String getTopCard() {
         return topCard;
+    }
+
+    public void setTopCard(String card) {
+        topCard = card;
+    }
+
+    public void setCards(ArrayList<String> cards, int player) {
+        //set that player's cards
+        playerList.get(player - 1).setCards(cards);
+    }
+
+    public int deckCount() {
+        return deck.getCount();
     }
 
     public int getCurrentTurn() {
@@ -51,7 +92,8 @@ public class Game {
         return playerList.get(pid - 1);
     }
 
-    public int deckCount() {
-        return deck.getCount();
+
+    public boolean isLeft() {
+        return isLeft;
     }
 }
