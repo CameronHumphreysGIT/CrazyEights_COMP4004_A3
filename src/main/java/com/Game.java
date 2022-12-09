@@ -9,6 +9,8 @@ import static com.Config.START_HAND;
 
 public class Game {
     ArrayList<Player> playerList = new ArrayList<>();
+    //list of all cards that have been drawn by a player, if it's their turn.
+    String drawn;
     Deck deck = new Deck();
     String topCard;
     int currentTurn;
@@ -38,6 +40,10 @@ public class Game {
         if (card == null) {
             return false;
         }
+        if (drawn != null && !drawn.equals(card)) {
+            //only the most recently drawn card is playable if the player chooses to draw
+            return false;
+        }
         //check if the card is currently playable
         //this works as my 1's are A instead of 10
         if (card.charAt(0) == '8' || card.charAt(0) == topCard.charAt(0)) {
@@ -65,6 +71,8 @@ public class Game {
             //skip them
             currentTurn = nextTurn();
         }
+        //always recent the drawn card.
+        drawn = null;
     }
 
     public void addPlayer(Player p) {
@@ -92,8 +100,9 @@ public class Game {
     }
 
     public void drawCard(int player) {
+        drawn = deck.dealCard();
         //dealem
-        playerList.get(player - 1).deal(deck.dealCard());
+        playerList.get(player - 1).deal(drawn);
     }
 
     public String getTopCard() {
