@@ -143,7 +143,7 @@ class Tester {
         @DisplayName("41Test")
         void FortyOneTest() {
             //have four players join
-            WebDriver[] drivers = fourPlayersJoin(new String[] {"Cam", "Matt", "Alexander", "Cierra"});
+            WebDriver[] drivers = fourPlayersJoin(new String[]{"Cam", "Matt", "Alexander", "Cierra"});
             //set the top card so we can play 3C
             gc.setTopCard("6C");
             gc.setCards(new ArrayList<>(Arrays.asList("5H", "KD", "3C", "9S", "JD")), 1);
@@ -170,11 +170,12 @@ class Tester {
             drivers[3].close();
             gc.reset();
         }
+
         @Test
         @DisplayName("42Test")
         void FortyTwoTest() {
             //have four players join
-            WebDriver[] drivers = fourPlayersJoin(new String[] {"Cam", "Matt", "Alexander", "Cierra"});
+            WebDriver[] drivers = fourPlayersJoin(new String[]{"Cam", "Matt", "Alexander", "Cierra"});
             //set the top card so we can play AH
             gc.setTopCard("6H");
             gc.setCards(new ArrayList<>(Arrays.asList("5H", "AH", "3C", "9S", "JD")), 1);
@@ -184,13 +185,12 @@ class Tester {
             //then, play that card:
             drivers[0].findElement(By.xpath("//button[text()='AH']")).click();
             //we actually skipped p1 here, so they get an alert
-            try{
+            try {
                 myWait(5);
                 Alert alert = drivers[1].switchTo().alert();
                 alert.accept();
                 drivers[1].switchTo().defaultContent();
-            }
-            catch(NoAlertPresentException ex){
+            } catch (NoAlertPresentException ex) {
                 fail();
             }
             //check that we changed the top card
@@ -226,11 +226,12 @@ class Tester {
             drivers[3].close();
             gc.reset();
         }
+
         @Test
         @DisplayName("44Test")
         void FortyFourTest() {
             //have four players join
-            WebDriver[] drivers = fourPlayersJoin(new String[] {"Cam", "Matt", "Alexander", "Cierra"});
+            WebDriver[] drivers = fourPlayersJoin(new String[]{"Cam", "Matt", "Alexander", "Cierra"});
             //set the top card so we can play 3C
             gc.setTopCard("6C");
             gc.setCards(new ArrayList<>(Arrays.asList("5H", "KD", "QC", "9S", "JD")), 1);
@@ -240,13 +241,12 @@ class Tester {
             //then, play that card:
             drivers[0].findElement(By.xpath("//button[text()='QC']")).click();
             //now wait for the alert for player 2, needs to happen here, otherwise it's unexpected
-            try{
+            try {
                 myWait(5);
                 Alert alert = drivers[1].switchTo().alert();
                 alert.accept();
                 drivers[1].switchTo().defaultContent();
-            }
-            catch(NoAlertPresentException ex){
+            } catch (NoAlertPresentException ex) {
                 fail();
             }
             //check that we changed the top card
@@ -267,11 +267,12 @@ class Tester {
             drivers[3].close();
             gc.reset();
         }
+
         @Test
         @DisplayName("45Test")
         void FortyFiveTest() {
             //have four players join
-            WebDriver[] drivers = fourPlayersJoin(new String[] {"Cam", "Matt", "Alexander", "Cierra"});
+            WebDriver[] drivers = fourPlayersJoin(new String[]{"Cam", "Matt", "Alexander", "Cierra"});
             //set the top card so we can play 3C
             gc.setTopCard("6C");
             gc.setCards(new ArrayList<>(Arrays.asList("5H", "KD", "7C", "9S", "JD")), 1);
@@ -302,11 +303,12 @@ class Tester {
             drivers[3].close();
             gc.reset();
         }
+
         @Test
         @DisplayName("46Test")
         void FortySixTest() {
             //have four players join
-            WebDriver[] drivers = fourPlayersJoin(new String[] {"Cam", "Matt", "Alexander", "Cierra"});
+            WebDriver[] drivers = fourPlayersJoin(new String[]{"Cam", "Matt", "Alexander", "Cierra"});
             //set the top card so we can play 3C
             gc.setTopCard("6H");
             gc.setCards(new ArrayList<>(Arrays.asList("5H", "KD", "7H", "9S", "JD")), 1);
@@ -328,13 +330,12 @@ class Tester {
             drivers[3].findElement(By.xpath("//button[text()='AH']")).click();
             //check that we changed the top card
             //we actually skipped p1 here, so they get an alert
-            try{
+            try {
                 myWait(5);
                 Alert alert = drivers[0].switchTo().alert();
                 alert.accept();
                 drivers[0].switchTo().defaultContent();
-            }
-            catch(NoAlertPresentException ex){
+            } catch (NoAlertPresentException ex) {
                 fail();
             }
             assertEquals("AH", drivers[0].findElement(By.id("topCard")).getText());
@@ -359,11 +360,12 @@ class Tester {
             drivers[3].close();
             gc.reset();
         }
+
         @Test
         @DisplayName("48Test")
         void FortyEightTest() {
             //have four players join
-            WebDriver[] drivers = fourPlayersJoin(new String[] {"Cam", "Matt", "Alexander", "Cierra"});
+            WebDriver[] drivers = fourPlayersJoin(new String[]{"Cam", "Matt", "Alexander", "Cierra"});
             //set the top card so we can play 3C
             gc.setTopCard("6C");
             gc.setCards(new ArrayList<>(Arrays.asList("5H", "KD", "7C", "9S", "JD")), 1);
@@ -383,13 +385,12 @@ class Tester {
             //then, play that card:
             drivers[3].findElement(By.xpath("//button[text()='QC']")).click();
             //now wait for the alert for player 2, needs to happen here, otherwise it's unexpected
-            try{
+            try {
                 myWait(5);
                 Alert alert = drivers[0].switchTo().alert();
                 alert.accept();
                 drivers[0].switchTo().defaultContent();
-            }
-            catch(NoAlertPresentException ex){
+            } catch (NoAlertPresentException ex) {
                 fail();
             }
             //check that we changed the top card
@@ -403,6 +404,32 @@ class Tester {
             assertEquals("In Game, Round1, Player2's turn turn order:left(incrementing), next: 3", drivers[2].findElement(By.id("status")).getText());
             assertEquals("In Game, Round1, Player2's turn turn order:left(incrementing), next: 3", drivers[3].findElement(By.id("status")).getText());
             //good stuff.
+            //teardown
+            drivers[0].close();
+            drivers[1].close();
+            drivers[2].close();
+            drivers[3].close();
+            gc.reset();
+        }
+
+        @Test
+        @DisplayName("51Test")
+        void FiftyOneTest() {
+            //have four players join
+            WebDriver[] drivers = fourPlayersJoin(new String[]{"Cam", "Matt", "Alexander", "Cierra"});
+            //set the top card so we can play 3C
+            gc.setTopCard("KC");
+            gc.setCards(new ArrayList<>(Arrays.asList("5H", "KH", "3C", "9S", "JD")), 1);
+            gc.refresh();
+            //check that it's playable
+            assertNotEquals(0, drivers[0].findElement(By.xpath("//button[text()='KH']")).getSize());
+            //then, play that card:
+            drivers[0].findElement(By.xpath("//button[text()='KH']")).click();
+            //check that we changed the top card
+            assertEquals("KH", drivers[0].findElement(By.id("topCard")).getText());
+            assertEquals("KH", drivers[1].findElement(By.id("topCard")).getText());
+            assertEquals("KH", drivers[2].findElement(By.id("topCard")).getText());
+            assertEquals("KH", drivers[3].findElement(By.id("topCard")).getText());
             //teardown
             drivers[0].close();
             drivers[1].close();
