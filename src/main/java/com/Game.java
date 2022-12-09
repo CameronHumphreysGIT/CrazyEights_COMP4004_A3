@@ -10,7 +10,7 @@ import static com.Config.START_HAND;
 public class Game {
     ArrayList<Player> playerList = new ArrayList<>();
     //list of all cards that have been drawn by a player, if it's their turn.
-    String drawn;
+    String drawn = "";
     Deck deck = new Deck();
     String topCard;
     int currentTurn;
@@ -40,7 +40,7 @@ public class Game {
         if (card == null) {
             return false;
         }
-        if (drawn != null && !drawn.equals(card)) {
+        if (!drawn.equals("") && !drawn.equals(card)) {
             //only the most recently drawn card is playable if the player chooses to draw
             return false;
         }
@@ -72,7 +72,7 @@ public class Game {
             currentTurn = nextTurn();
         }
         //always recent the drawn card.
-        drawn = null;
+        drawn = "";
     }
 
     public void addPlayer(Player p) {
@@ -100,9 +100,20 @@ public class Game {
     }
 
     public void drawCard(int player) {
-        drawn = deck.dealCard();
+        String deal = deck.dealCard();
+        if (topCard.charAt(0) == '2') {
+            if (!drawn.equals("OneDown")) {
+                //the current player must draw.
+                drawn = "OneDown";
+            }else {
+                //we have finished drawing...
+                drawn = "";
+            }
+        } else {
+            drawn = deal;
+        }
         //dealem
-        playerList.get(player - 1).deal(drawn);
+        playerList.get(player - 1).deal(deal);
     }
 
     public String getTopCard() {

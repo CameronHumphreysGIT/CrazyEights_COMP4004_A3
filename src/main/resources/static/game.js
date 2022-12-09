@@ -153,6 +153,10 @@ function showGame(message) {
                 stompClient.send("/app/play/" + number, {}, JSON.stringify({"response": "end"}));
                 drawCount = 0;
             }
+            //reset drawcount if we reacted to a two.
+            if ($("#topCard").text()[0] == '2' && drawCount == 2) {
+                drawCount = 0;
+            }
             //we don't want to reset all that hard work
             return;
         }
@@ -188,6 +192,7 @@ function playCard(event) {
         $("#S").click(function() {
             //send response
             stompClient.send("/app/play/" + number, {}, JSON.stringify({"response": "8S"}));
+            $( "#draw" ).prop( "disabled", true);
             //delete buttons
             $("#S").remove();
             $("#C").remove();
@@ -197,6 +202,7 @@ function playCard(event) {
         $("#C").click(function() {
             //send response
             stompClient.send("/app/play/" + number, {}, JSON.stringify({"response": "8C"}));
+            $( "#draw" ).prop( "disabled", true);
             //delete buttons
             $("#S").remove();
             $("#C").remove();
@@ -206,6 +212,7 @@ function playCard(event) {
         $("#H").click(function() {
             //send response
             stompClient.send("/app/play/" + number, {}, JSON.stringify({"response": "8H"}));
+            $( "#draw" ).prop( "disabled", true);
             //delete buttons
             $("#S").remove();
             $("#C").remove();
@@ -215,6 +222,7 @@ function playCard(event) {
         $("#D").click(function() {
             //send response
             stompClient.send("/app/play/" + number, {}, JSON.stringify({"response": "8D"}));
+            $( "#draw" ).prop( "disabled", true);
             //delete buttons
             $("#S").remove();
             $("#C").remove();
@@ -227,6 +235,8 @@ function playCard(event) {
     console.log("sending: " + "#card" + (event.data.id)  + " res: "+ response);
     //send the response as the card string
     stompClient.send("/app/play/" + number, {}, JSON.stringify({"response": ("" + response)}));
+    $( "#draw" ).prop( "disabled", true);
+    //TODO remove the lastmessage shit
     lastMessage.to = "/app/play/" + number;
     //delete these if they exist
     $("#S").remove();
