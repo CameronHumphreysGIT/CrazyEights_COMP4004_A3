@@ -183,6 +183,16 @@ class Tester {
             assertNotEquals(0, drivers[0].findElement(By.xpath("//button[text()='AH']")).getSize());
             //then, play that card:
             drivers[0].findElement(By.xpath("//button[text()='AH']")).click();
+            //we actually skipped p1 here, so they get an alert
+            try{
+                myWait(5);
+                Alert alert = drivers[1].switchTo().alert();
+                alert.accept();
+                drivers[1].switchTo().defaultContent();
+            }
+            catch(NoAlertPresentException ex){
+                fail();
+            }
             //check that we changed the top card
             assertEquals("AH", drivers[0].findElement(By.id("topCard")).getText());
             assertEquals("AH", drivers[1].findElement(By.id("topCard")).getText());
@@ -306,14 +316,27 @@ class Tester {
             gc.refresh();
             //everyone plays in sequence
             drivers[0].findElement(By.xpath("//button[text()='7H']")).click();
+            myWait(1);
             drivers[1].findElement(By.xpath("//button[text()='JH']")).click();
+            myWait(1);
             drivers[2].findElement(By.xpath("//button[text()='2H']")).click();
+            myWait(1);
             assertEquals("In Game, Round1, Player4's turn turn order:left(incrementing), next: 1", drivers[0].findElement(By.id("status")).getText());
             assertEquals("In Game, Round1, Player4's turn turn order:left(incrementing), next: 1", drivers[1].findElement(By.id("status")).getText());
             assertEquals("In Game, Round1, Player4's turn turn order:left(incrementing), next: 1", drivers[2].findElement(By.id("status")).getText());
             assertEquals("In Game, Round1, Player4's turn turn order:left(incrementing), next: 1", drivers[3].findElement(By.id("status")).getText());
             drivers[3].findElement(By.xpath("//button[text()='AH']")).click();
             //check that we changed the top card
+            //we actually skipped p1 here, so they get an alert
+            try{
+                myWait(5);
+                Alert alert = drivers[0].switchTo().alert();
+                alert.accept();
+                drivers[0].switchTo().defaultContent();
+            }
+            catch(NoAlertPresentException ex){
+                fail();
+            }
             assertEquals("AH", drivers[0].findElement(By.id("topCard")).getText());
             assertEquals("AH", drivers[1].findElement(By.id("topCard")).getText());
             assertEquals("AH", drivers[2].findElement(By.id("topCard")).getText());
@@ -350,8 +373,11 @@ class Tester {
             gc.refresh();
             //everyone plays in sequence
             drivers[0].findElement(By.xpath("//button[text()='7C']")).click();
+            myWait(1);
             drivers[1].findElement(By.xpath("//button[text()='JC']")).click();
+            myWait(1);
             drivers[2].findElement(By.xpath("//button[text()='2C']")).click();
+            myWait(1);
             //check that it's playable
             assertNotEquals(0, drivers[3].findElement(By.xpath("//button[text()='QC']")).getSize());
             //then, play that card:
