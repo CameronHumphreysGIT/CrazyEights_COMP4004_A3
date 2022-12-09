@@ -257,6 +257,41 @@ class Tester {
             drivers[3].close();
             gc.reset();
         }
+        @Test
+        @DisplayName("45Test")
+        void FortyFiveTest() {
+            //have four players join
+            WebDriver[] drivers = fourPlayersJoin(new String[] {"Cam", "Matt", "Alexander", "Cierra"});
+            //set the top card so we can play 3C
+            gc.setTopCard("6C");
+            gc.setCards(new ArrayList<>(Arrays.asList("5H", "KD", "7C", "9S", "JD")), 1);
+            gc.setCards(new ArrayList<>(Arrays.asList("5H", "KD", "JC", "9S", "JD")), 2);
+            gc.setCards(new ArrayList<>(Arrays.asList("5H", "KD", "2C", "9S", "JD")), 3);
+            gc.setCards(new ArrayList<>(Arrays.asList("5H", "KD", "3C", "9S", "JD")), 4);
+            gc.refresh();
+            //everyone plays in sequence
+            drivers[0].findElement(By.xpath("//button[text()='7C']")).click();
+            drivers[1].findElement(By.xpath("//button[text()='JC']")).click();
+            drivers[2].findElement(By.xpath("//button[text()='2C']")).click();
+            drivers[3].findElement(By.xpath("//button[text()='3C']")).click();
+            //check that we changed the top card
+            assertEquals("3C", drivers[0].findElement(By.id("topCard")).getText());
+            assertEquals("3C", drivers[1].findElement(By.id("topCard")).getText());
+            assertEquals("3C", drivers[2].findElement(By.id("topCard")).getText());
+            assertEquals("3C", drivers[3].findElement(By.id("topCard")).getText());
+            //check that the player has changed to player 2
+            assertEquals("In Game, Round1, Player1's turn turn order:left(incrementing), next: 2", drivers[0].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn turn order:left(incrementing), next: 2", drivers[1].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn turn order:left(incrementing), next: 2", drivers[2].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn turn order:left(incrementing), next: 2", drivers[3].findElement(By.id("status")).getText());
+            //good stuff.
+            //teardown
+            drivers[0].close();
+            drivers[1].close();
+            drivers[2].close();
+            drivers[3].close();
+            gc.reset();
+        }
     }
     //helpers
     WebDriver playerJoin(String name, int num) {
