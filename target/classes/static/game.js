@@ -7,6 +7,7 @@ var next;
 var draw;
 var maxHand;
 var played = false;
+var drawCount = 0;
 const lastMessage = {to:"someone", content:"something"};
 
 function main() {
@@ -26,6 +27,7 @@ function main() {
        console.log("clicked the draw button");
        //send response
        stompClient.send("/app/" + number, {}, JSON.stringify({"response": "draw"}));
+       drawCount++;
    });
 }
 
@@ -137,11 +139,19 @@ function showGame(message) {
                 }
             }
             //create the draw button, maybe
-            if (!$( "#draw" ).prop("disabled") && hasPlayable) {
-                //means we have already drawn, and we must play the first playable card
-                $( "#draw" ).prop( "disabled", true);
-            }else if(message.cardCount != maxHand)    {
+            if(message.cardCount != maxHand)    {
                 $( "#draw" ).prop( "disabled", false);
+            }
+            if (hasPlayable) {
+                if (drawCount > 0) {
+                    //means we have already drawn, and we must play the first playable card
+                    $( "#draw" ).prop( "disabled", true);
+                }
+            }else if (drawCount == draw) {
+                $( "#draw" ).prop( "disabled", true);
+                //no playable card, and we can't draw, end turn
+                stompClient.send("/app/play/" + number, {}, JSON.stringify({"response": "end"}));
+                drawCount = 0;
             }
             //we don't want to reset all that hard work
             return;

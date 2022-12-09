@@ -48,10 +48,13 @@ public class Game {
     }
 
     public void play(String card, int player) {
-        //player played a card.
-        topCard = card;
-        //take it out of their hand.
-        playerList.get(player - 1).discard(card);
+        //maybe they are just ending their turn
+        if (!card.equals("end")) {
+            //player played a card.
+            topCard = card;
+            //take it out of their hand.
+            playerList.get(player - 1).discard(card);
+        }
         //aces got some special stuff.
         if (card.charAt(0) == ('A')) {
             //played an ace, flip order go to previous player
