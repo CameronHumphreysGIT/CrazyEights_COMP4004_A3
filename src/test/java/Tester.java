@@ -4,12 +4,16 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -207,6 +211,45 @@ class Tester {
             assertEquals("In Game, Round1, Player3's turn turn order:right(decrementing), next: 2", drivers[1].findElement(By.id("status")).getText());
             assertEquals("In Game, Round1, Player3's turn turn order:right(decrementing), next: 2", drivers[2].findElement(By.id("status")).getText());
             assertEquals("In Game, Round1, Player3's turn turn order:right(decrementing), next: 2", drivers[3].findElement(By.id("status")).getText());
+            //teardown
+            drivers[0].close();
+            drivers[1].close();
+            drivers[2].close();
+            drivers[3].close();
+            gc.reset();
+        }
+        @Test
+        @DisplayName("44Test")
+        void FortyFourTest() {
+            //have four players join
+            WebDriver[] drivers = fourPlayersJoin(new String[] {"Cam", "Matt", "Alexander", "Cierra"});
+            //set the top card so we can play 3C
+            gc.setTopCard("6C");
+            gc.setCards(new ArrayList<>(Arrays.asList("5H", "KD", "QC", "9S", "JD")), 1);
+            gc.refresh();
+            //check that it's playable
+            assertNotEquals(0, drivers[0].findElement(By.xpath("//button[text()='QC']")).getSize());
+            //then, play that card:
+            drivers[0].findElement(By.xpath("//button[text()='QC']")).click();
+            //check that we changed the top card
+            assertEquals("QC", drivers[0].findElement(By.id("topCard")).getText());
+            assertEquals("QC", drivers[1].findElement(By.id("topCard")).getText());
+            assertEquals("QC", drivers[2].findElement(By.id("topCard")).getText());
+            assertEquals("QC", drivers[3].findElement(By.id("topCard")).getText());
+            //check that the player has changed to player 2
+            assertEquals("In Game, Round1, Player3's turn turn order:left(incrementing), next: 4", drivers[0].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player3's turn turn order:left(incrementing), next: 4", drivers[1].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player3's turn turn order:left(incrementing), next: 4", drivers[2].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player3's turn turn order:left(incrementing), next: 4", drivers[3].findElement(By.id("status")).getText());
+            //now wait for the alert for player 2
+            WebDriverWait wait = new WebDriverWait(drivers[1], Duration.ofSeconds(1));
+            try {
+                wait.until(ExpectedConditions.alertIsPresent());
+                assertTrue(true);
+            } catch (TimeoutException eTO) {
+                assertTrue(false);
+            }
+            //good stuff.
             //teardown
             drivers[0].close();
             drivers[1].close();
