@@ -13,6 +13,9 @@ function main() {
        stompClient.subscribe('/topic/welcome', function (greeting) {
            showWelcome(JSON.parse(greeting.body));
        }, {id: "welcome"});
+       stompClient.subscribe('/topic/lobby', function (message) {
+              showStatus(JSON.parse(message.body));
+       }, {id: "lobby"});
    });
 }
 
@@ -36,11 +39,11 @@ function showWelcome(message) {
     stompClient.send("/app/lobby", {}, JSON.stringify({}));
     lastMessage.to = "/app/lobby";
     lastMessage.content = {};
-    stompClient.subscribe('/topic/lobby', function (message) {
-       showStatus(JSON.parse(message.body));
-    });
     //this will, wait 300 milis, then call waitNextStage
     setTimeout(waitNextStage(connectionStage), 300);
+    stompClient.subscribe('/topic/' + number, function (message) {
+      showGame(JSON.parse(message.body));
+    }, {id: "justMe"});
 }
 
 function showStatus(message) {
@@ -51,9 +54,6 @@ function showStatus(message) {
         stompClient.send("/app/" + number, {}, JSON.stringify({"response":""}));
         lastMessage.to = "/app/" + number;
         lastMessage.content = {"response":""};
-        stompClient.subscribe('/topic/' + number, function (message) {
-           showGame(JSON.parse(message.body));
-        });
         //this will, wait 300 milis, then call waitNextStage
         setTimeout(waitNextStage(connectionStage), 2000);
         response = false;

@@ -46,8 +46,12 @@ public class Game {
         topCard = card;
         //take it out of their hand.
         playerList.get(player - 1).discard(card);
-        //increment turn
-        currentTurn++;
+        //aces got some special stuff.
+        if (card.charAt(0) == ('A')) {
+            //played an ace, flip order go to previous player
+            isLeft = false;
+        }
+        currentTurn = nextTurn();
     }
 
     public void addPlayer(Player p) {
@@ -59,8 +63,19 @@ public class Game {
     }
 
     public int nextTurn() {
-        //TODO update later
-        return currentTurn + 1;
+        if (isLeft) {
+            if (currentTurn == playerCount()) {
+                //back to first player
+                return 1;
+            }
+            return currentTurn + 1;
+        }else {
+            if (currentTurn == 1) {
+                //back to last player
+                return playerCount();
+            }
+            return currentTurn - 1;
+        }
     }
 
     public String getTopCard() {
