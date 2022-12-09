@@ -1,13 +1,14 @@
 $(document).ready(main);
 var stompClient = null;
-var number = null;
-var response = false;
+var number = null; // player number
+var response = false; //boolean if it's our turn or we are the first player, tells us if we have already asked for an update
 var connectionStage = 0;
-var next;
-var draw;
-var maxHand;
-var played = false;
-var drawCount = 0;
+var next; //boolean to see if we were the next player
+var draw; //max cards that can be drawn before turn skipped.
+var maxHand; //the maximum hand we can have in the game
+var played = false; //have we played a card?
+var drawCount = 0; //how many cards have we drawn?
+var doneDrawing = false; //if true we have finished our obligatory drawing of cards.
 const lastMessage = {to:"someone", content:"something"};
 
 function main() {
@@ -154,8 +155,9 @@ function showGame(message) {
                 drawCount = 0;
             }
             //reset drawcount if we reacted to a two.
-            if ($("#topCard").text()[0] == '2' && drawCount == 2) {
+            if ($("#topCard").text()[0] == '2' && drawCount == 2 && !(doneDrawing)) {
                 drawCount = 0;
+                doneDrawing = true;
             }
             //we don't want to reset all that hard work
             return;
