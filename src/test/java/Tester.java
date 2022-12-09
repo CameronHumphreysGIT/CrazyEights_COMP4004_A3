@@ -3,9 +3,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -231,6 +229,16 @@ class Tester {
             assertNotEquals(0, drivers[0].findElement(By.xpath("//button[text()='QC']")).getSize());
             //then, play that card:
             drivers[0].findElement(By.xpath("//button[text()='QC']")).click();
+            //now wait for the alert for player 2, needs to happen here, otherwise it's unexpected
+            try{
+                myWait(5);
+                Alert alert = drivers[1].switchTo().alert();
+                alert.accept();
+                drivers[1].switchTo().defaultContent();
+            }
+            catch(NoAlertPresentException ex){
+                fail();
+            }
             //check that we changed the top card
             assertEquals("QC", drivers[0].findElement(By.id("topCard")).getText());
             assertEquals("QC", drivers[1].findElement(By.id("topCard")).getText());
@@ -241,14 +249,6 @@ class Tester {
             assertEquals("In Game, Round1, Player3's turn turn order:left(incrementing), next: 4", drivers[1].findElement(By.id("status")).getText());
             assertEquals("In Game, Round1, Player3's turn turn order:left(incrementing), next: 4", drivers[2].findElement(By.id("status")).getText());
             assertEquals("In Game, Round1, Player3's turn turn order:left(incrementing), next: 4", drivers[3].findElement(By.id("status")).getText());
-            //now wait for the alert for player 2
-            WebDriverWait wait = new WebDriverWait(drivers[1], Duration.ofSeconds(1));
-            try {
-                wait.until(ExpectedConditions.alertIsPresent());
-                assertTrue(true);
-            } catch (TimeoutException eTO) {
-                assertTrue(false);
-            }
             //good stuff.
             //teardown
             drivers[0].close();
