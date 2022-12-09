@@ -16,6 +16,7 @@ public class Game {
     int currentTurn;
     int round = 0;
     boolean isLeft = true;
+    int twos = 0;
 
     public Game() {
     }
@@ -70,6 +71,13 @@ public class Game {
         if (card.charAt(0) == 'Q') {
             //skip them
             currentTurn = nextTurn();
+        }
+        //set twos as the amount of twos played in a row.
+        if (card.charAt(0) == '2') {
+            twos++;
+        }else if (twos != 0) {
+            //means we played a non two on top of a two, reset chain.
+            twos = 0;
         }
         //always recent the drawn card.
         drawn = "";
@@ -153,5 +161,9 @@ public class Game {
 
     public boolean isLeft() {
         return isLeft;
+    }
+
+    public int getTwos() {
+        return twos;
     }
 }

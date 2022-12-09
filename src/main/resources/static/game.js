@@ -5,10 +5,11 @@ var response = false; //boolean if it's our turn or we are the first player, tel
 var connectionStage = 0;
 var next; //boolean to see if we were the next player
 var draw; //max cards that can be drawn before turn skipped.
-var maxHand; //the maximum hand we can have in the game
+var maxHand = 0; //the maximum hand we can have in the game
 var played = false; //have we played a card?
 var drawCount = 0; //how many cards have we drawn?
 var doneDrawing = false; //if true we have finished our obligatory drawing of cards.
+var twos = 0;
 const lastMessage = {to:"someone", content:"something"};
 
 function main() {
@@ -114,6 +115,7 @@ function showGame(message) {
     connectionStage = 4;
     //if we are the current turn
     var status = $("#status").text();
+    var twos = parseInt(message.twos);
     if (status[23] === ("" + number)) {
         //my turn
         if (!response) {
@@ -149,13 +151,15 @@ function showGame(message) {
                     $( "#draw" ).prop( "disabled", true);
                 }
             }else if (drawCount == draw) {
-                $( "#draw" ).prop( "disabled", true);
-                //no playable card, and we can't draw, end turn
-                stompClient.send("/app/play/" + number, {}, JSON.stringify({"response": "end"}));
-                drawCount = 0;
+                //if we are picking up twos, we can go beyond this limit:
+                if (twos == 0 || (doneDrawing)) {
+                    $( "#draw" ).prop( "disabled", true);
+                    //no playable card, and we can't draw, end turn
+                    endTurn("end");
+                }
             }
             //reset drawcount if we reacted to a two.
-            if ($("#topCard").text()[0] == '2' && drawCount == 2 && !(doneDrawing)) {
+            if ($("#topCard").text()[0] == '2' && drawCount == (2*twos) && !(doneDrawing)) {
                 drawCount = 0;
                 doneDrawing = true;
             }
@@ -174,7 +178,7 @@ function setGameInfo(message) {
     }
     $("#deck").html(message.deckCount);
     $("#topCard").html(message.topCard);
-    if (!played) {
+    if (!played && maxHand == 0) {
         //haven't played any cards, means cardCount = starting hand
         maxHand = message.cardCount + draw;
     }
@@ -191,62 +195,40 @@ function playCard(event) {
         $("#form").append('<button id="H" class="btn btn-default" type="submit">H</button>');
         $("#form").append('<button id="D" class="btn btn-default" type="submit">D</button>');
         //set click functions
-        $("#S").click(function() {
-            //send response
-            stompClient.send("/app/play/" + number, {}, JSON.stringify({"response": "8S"}));
-            $( "#draw" ).prop( "disabled", true);
-            //delete buttons
-            $("#S").remove();
-            $("#C").remove();
-            $("#H").remove();
-            $("#D").remove();
-        });
-        $("#C").click(function() {
-            //send response
-            stompClient.send("/app/play/" + number, {}, JSON.stringify({"response": "8C"}));
-            $( "#draw" ).prop( "disabled", true);
-            //delete buttons
-            $("#S").remove();
-            $("#C").remove();
-            $("#H").remove();
-            $("#D").remove();
-        });
-        $("#H").click(function() {
-            //send response
-            stompClient.send("/app/play/" + number, {}, JSON.stringify({"response": "8H"}));
-            $( "#draw" ).prop( "disabled", true);
-            //delete buttons
-            $("#S").remove();
-            $("#C").remove();
-            $("#H").remove();
-            $("#D").remove();
-        });
-        $("#D").click(function() {
-            //send response
-            stompClient.send("/app/play/" + number, {}, JSON.stringify({"response": "8D"}));
-            $( "#draw" ).prop( "disabled", true);
-            //delete buttons
-            $("#S").remove();
-            $("#C").remove();
-            $("#H").remove();
-            $("#D").remove();
-        });
+        $("#S").click({suit: "S"}, sendSuit());
+        $("#C").click({suit: "C"}, sendSuit());
+        $("#H").click({suit: "H"}, sendSuit());
+        $("#D").click({suit: "D"}, sendSuit());
         //don't want to send a response anyways...
         return;
     }
     console.log("sending: " + "#card" + (event.data.id)  + " res: "+ response);
     //send the response as the card string
-    stompClient.send("/app/play/" + number, {}, JSON.stringify({"response": ("" + response)}));
-    $( "#draw" ).prop( "disabled", true);
     //TODO remove the lastmessage shit
     lastMessage.to = "/app/play/" + number;
-    //delete these if they exist
+    lastMessage.content = {"response":response};
+    //this will, wait 300 milis, then call waitNextStage
+    setTimeout(waitNextStage(connectionStage), 2000);
+    endTurn("" + response);
+}
+
+function setSuit(event) {
+    //send response
+    endTurn("" + event.data.suit);
+}
+
+function endTurn(res) {
+    //send card or end
+    stompClient.send("/app/play/" + number, {}, JSON.stringify({"response": res}));
+    //ending turn
+    $( "#draw" ).prop( "disabled", true);
+    played = false;
+    drawCount = 0;
+    doneDrawing = false;
+    twos = 0;
+    //delete's if exist
     $("#S").remove();
     $("#C").remove();
     $("#H").remove();
     $("#D").remove();
-    lastMessage.content = {"response":response};
-    //this will, wait 300 milis, then call waitNextStage
-    setTimeout(waitNextStage(connectionStage), 2000);
 }
-
