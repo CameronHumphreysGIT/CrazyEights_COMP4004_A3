@@ -52,11 +52,11 @@ function showStatus(message) {
     if (message.content !== "") {
         connectionStage = 3;
         $("#status").html("In Game, Round" + message.round + ", Player" + message.content + "'s turn " + "turn order:" + message.dir + ", next: " + message.next);
-        //TODO consider making a unique alert for aces
-        if (next && (message.content != number) && $("#topCard").text()[0] == 'Q') {
-            alert("Previous player played a queen, you were Skipped");
+        if (next && (message.content != number)) {
+            alert("Previous player played a queen or Ace, you were Skipped");
         }
-        next = (number == message.next);
+         next = (number == message.next);
+
         stompClient.send("/app/" + number, {}, JSON.stringify({"response":""}));
         lastMessage.to = "/app/" + number;
         lastMessage.content = {"response":""};
