@@ -86,6 +86,11 @@ public class Game {
         }
     }
 
+    public void drawCard(int player) {
+        //dealem
+        playerList.get(player - 1).deal(deck.dealCard());
+    }
+
     public String getTopCard() {
         return topCard;
     }
@@ -97,6 +102,11 @@ public class Game {
     public void setCards(ArrayList<String> cards, int player) {
         //set that player's cards
         playerList.get(player - 1).setCards(cards);
+    }
+
+    public void setDraw(String c) {
+        //set the next card to be drawn
+        deck.setTop(c);
     }
 
     public int deckCount() {

@@ -124,6 +124,15 @@ function showGame(message) {
                     $("#cards").append('<p id="card' + (i+1) + '" style="display:inline">' + message.cards[i] + ' </p>');
                 }
             }
+            //create the draw button
+            $( "#draw" ).prop( "disabled", false);
+            //set the click func
+            $("#draw").click(function() {
+                //send response
+                stompClient.send("/app/" + number, {}, JSON.stringify({"response": "draw"}));
+                //disable, we will get a response updating our cards...
+                $( "#draw" ).prop( "disabled", true);
+            });
             //we don't want to reset all that hard work
             return;
         }

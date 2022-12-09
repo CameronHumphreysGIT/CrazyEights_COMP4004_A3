@@ -61,15 +61,18 @@ public class GameController {
     @SendTo("/topic/{playerId}")
     public GameMessage game1(@DestinationVariable("playerId") int pId, ResponseMessage rm) throws Exception {
         System.out.println("Got card request from player" + pId);
-        if (rm.getResponse().equals("update")) {
+        if (!rm.getResponse().equals("")) {
+            //player wants an update or to draw a card
+            if (rm.getResponse().equals("draw")) {
+                g.drawCard(pId);
+            }
             //player specifically asking for an update, it's this players turn
             System.out.println("sending buttons to player" + pId);
             return new UpdateMessage(g, pId);
-        } else {
-            //give it the game object, it'll set everything else
-            System.out.println("sending regular cards to" + pId);
-            return new StartMessage(g, pId);
         }
+        //give it the game object, it'll set everything else
+        System.out.println("sending regular cards to" + pId);
+        return new StartMessage(g, pId);
     }
     @MessageMapping("/play/{playerId}")
     @SendTo("/topic/lobby")
@@ -89,6 +92,7 @@ public class GameController {
     public void setTopCard(String card) {
         g.setTopCard(card);
     }
+    public void setDraw(String card) {g.setDraw(card);}
     public void refresh() {
         //go through and send a refresh to each player.
         for (int i = 1; i <= g.playerCount(); i++) {

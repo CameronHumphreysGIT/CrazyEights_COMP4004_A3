@@ -31,6 +31,10 @@ public class Deck {
         shuffle();
     }
 
+    public void setTop(String c) {
+        cards.set(0, c);
+    }
+
     public String dealCard() {
         String out = cards.get(0);
         cards.remove(0);
