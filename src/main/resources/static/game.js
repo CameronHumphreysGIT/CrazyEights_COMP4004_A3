@@ -143,10 +143,62 @@ function setGameInfo(message) {
 
 function playCard(event) {
     var response = $("#card" + (event.data.id)).text();
+    if (response[0] == '8') {
+        //prompt for a suit
+        //add yes and no buttons
+        $("#form").append('<button id="S" class="btn btn-default" type="submit">S</button>');
+        $("#form").append('<button id="C" class="btn btn-default" type="submit">C</button>');
+        $("#form").append('<button id="H" class="btn btn-default" type="submit">H</button>');
+        $("#form").append('<button id="D" class="btn btn-default" type="submit">D</button>');
+        //set click functions
+        $("#S").click(function() {
+            //send response
+            stompClient.send("/app/play/" + number, {}, JSON.stringify({"response": "8S"}));
+            //delete buttons
+            $("#S").remove();
+            $("#C").remove();
+            $("#H").remove();
+            $("#D").remove();
+        });
+        $("#C").click(function() {
+            //send response
+            stompClient.send("/app/play/" + number, {}, JSON.stringify({"response": "8C"}));
+            //delete buttons
+            $("#S").remove();
+            $("#C").remove();
+            $("#H").remove();
+            $("#D").remove();
+        });
+        $("#H").click(function() {
+            //send response
+            stompClient.send("/app/play/" + number, {}, JSON.stringify({"response": "8H"}));
+            //delete buttons
+            $("#S").remove();
+            $("#C").remove();
+            $("#H").remove();
+            $("#D").remove();
+        });
+        $("#D").click(function() {
+            //send response
+            stompClient.send("/app/play/" + number, {}, JSON.stringify({"response": "8D"}));
+            //delete buttons
+            $("#S").remove();
+            $("#C").remove();
+            $("#H").remove();
+            $("#D").remove();
+        });
+        //don't want to send a response anyways...
+        return;
+    }
     console.log("sending: " + "#card" + (event.data.id)  + " res: "+ response);
     //send the response as the card string
     stompClient.send("/app/play/" + number, {}, JSON.stringify({"response": ("" + response)}));
     lastMessage.to = "/app/play/" + number;
+    //delete these if they exist
+    $("#S").remove();
+    $("#C").remove();
+    $("#H").remove();
+    $("#D").remove();
     lastMessage.content = {"response":response};
     //this will, wait 300 milis, then call waitNextStage
     setTimeout(waitNextStage(connectionStage), 2000);
