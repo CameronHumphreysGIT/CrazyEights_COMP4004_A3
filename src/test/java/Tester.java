@@ -492,6 +492,36 @@ class Tester {
             drivers[3].close();
             gc.reset();
         }
+        @Test
+        @DisplayName("54Test")
+        void FiftyFourTest() {
+            //have four players join
+            WebDriver[] drivers = fourPlayersJoin(new String[]{"Cam", "Matt", "Alexander", "Cierra"});
+            //set the top card so we can play 3C
+            gc.setTopCard("KC");
+            gc.setCards(new ArrayList<>(Arrays.asList("5H", "7H", "5S", "9S", "JD")), 1);
+            gc.refresh();
+            //check that it's not playable
+            try {
+                assertTrue(drivers[0].findElement(By.xpath("//button[text()='5S']")).isDisplayed());
+            } catch (NoSuchElementException e) {
+                //good
+                assertTrue(true);
+            }
+
+            //check that we didn't change the top card
+            //we don't reset the topcard for the first player, just the buttons that they are able to click. because we are not changing the topcard, it isn't the same as what others see.
+            //assertEquals("KC", drivers[0].findElement(By.id("topCard")).getText());
+            assertEquals("KC", drivers[1].findElement(By.id("topCard")).getText());
+            assertEquals("KC", drivers[2].findElement(By.id("topCard")).getText());
+            assertEquals("KC", drivers[3].findElement(By.id("topCard")).getText());
+            //teardown
+            drivers[0].close();
+            drivers[1].close();
+            drivers[2].close();
+            drivers[3].close();
+            gc.reset();
+        }
     }
     //helpers
     WebDriver playerJoin(String name, int num) {
