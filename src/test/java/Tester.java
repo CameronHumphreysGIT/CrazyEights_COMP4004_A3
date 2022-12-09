@@ -35,7 +35,7 @@ class Tester {
             //helper does test for us now
             WebDriver driver = playerJoin("Cameron", 1);
             //teardown
-            driver.close();
+            driver.quit();
             //reset the game object for the next test
             gc.reset();
         }
@@ -57,19 +57,14 @@ class Tester {
             assertEquals("Three total players, would you like to wait for another?", driver1.findElement(By.id("status")).getText());
             driver1.findElement(By.id("No")).click();
             //wait
-            myWait(0.1);
-
-            assertEquals("In Game", driver1.findElement(By.id("status")).getText());
-            //wait
             myWait(1.0);
-
-            assertEquals("In Game, Round1, Player1's turn turn order: left(incrementing), next: 2", driver1.findElement(By.id("status")).getText());
-            assertEquals("In Game, Round1, Player1's turn turn order: left(incrementing), next: 2", driver2.findElement(By.id("status")).getText());
-            assertEquals("In Game, Round1, Player1's turn turn order: left(incrementing), next: 2", driver3.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn turn order:left(incrementing), next: 2", driver1.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn turn order:left(incrementing), next: 2", driver2.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn turn order:left(incrementing), next: 2", driver3.findElement(By.id("status")).getText());
             //teardown
-            driver1.close();
-            driver2.close();
-            driver3.close();
+            driver1.quit();
+            driver2.quit();
+            driver3.quit();
             //reset the game object for the next test
             gc.reset();
         }
@@ -98,16 +93,16 @@ class Tester {
             assertEquals("Waiting...2 other players", driver2.findElement(By.id("status")).getText());
             assertEquals("Waiting...2 other players", driver3.findElement(By.id("status")).getText());
             WebDriver driver4 = playerJoin("Hans", 4);
-            assertEquals("In Game, Round1, Player1's turn turn order: left(incrementing), next: 2", driver1.findElement(By.id("status")).getText());
-            assertEquals("In Game, Round1, Player1's turn turn order: left(incrementing), next: 2", driver2.findElement(By.id("status")).getText());
-            assertEquals("In Game, Round1, Player1's turn turn order: left(incrementing), next: 2", driver3.findElement(By.id("status")).getText());
-            assertEquals("In Game, Round1, Player1's turn turn order: left(incrementing), next: 2", driver4.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn turn order:left(incrementing), next: 2", driver1.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn turn order:left(incrementing), next: 2", driver2.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn turn order:left(incrementing), next: 2", driver3.findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player1's turn turn order:left(incrementing), next: 2", driver4.findElement(By.id("status")).getText());
 
             //teardown
-            driver1.close();
-            driver2.close();
-            driver3.close();
-            driver4.close();
+            driver1.quit();
+            driver2.quit();
+            driver3.quit();
+            driver4.quit();
             //reset the game object for the next test
             gc.reset();
         }
@@ -129,9 +124,9 @@ class Tester {
             assertEquals("36", driver3.findElement(By.id("deck")).getText());
             //that's all while i still can't rig the game.
             //teardown
-            driver1.close();
-            driver2.close();
-            driver3.close();
+            driver1.quit();
+            driver2.quit();
+            driver3.quit();
             //reset the game object for the next test
             gc.reset();
         }
@@ -164,10 +159,10 @@ class Tester {
             assertEquals("In Game, Round1, Player2's turn turn order:left(incrementing), next: 3", drivers[3].findElement(By.id("status")).getText());
             //good stuff.
             //teardown
-            drivers[0].close();
-            drivers[1].close();
-            drivers[2].close();
-            drivers[3].close();
+            drivers[0].quit();
+            drivers[1].quit();
+            drivers[2].quit();
+            drivers[3].quit();
             gc.reset();
         }
 
@@ -220,10 +215,10 @@ class Tester {
             assertEquals("In Game, Round1, Player3's turn turn order:right(decrementing), next: 2", drivers[2].findElement(By.id("status")).getText());
             assertEquals("In Game, Round1, Player3's turn turn order:right(decrementing), next: 2", drivers[3].findElement(By.id("status")).getText());
             //teardown
-            drivers[0].close();
-            drivers[1].close();
-            drivers[2].close();
-            drivers[3].close();
+            drivers[0].quit();
+            drivers[1].quit();
+            drivers[2].quit();
+            drivers[3].quit();
             gc.reset();
         }
 
@@ -261,10 +256,10 @@ class Tester {
             assertEquals("In Game, Round1, Player3's turn turn order:left(incrementing), next: 4", drivers[3].findElement(By.id("status")).getText());
             //good stuff.
             //teardown
-            drivers[0].close();
-            drivers[1].close();
-            drivers[2].close();
-            drivers[3].close();
+            drivers[0].quit();
+            drivers[1].quit();
+            drivers[2].quit();
+            drivers[3].quit();
             gc.reset();
         }
 
@@ -297,10 +292,10 @@ class Tester {
             assertEquals("In Game, Round1, Player1's turn turn order:left(incrementing), next: 2", drivers[3].findElement(By.id("status")).getText());
             //good stuff.
             //teardown
-            drivers[0].close();
-            drivers[1].close();
-            drivers[2].close();
-            drivers[3].close();
+            drivers[0].quit();
+            drivers[1].quit();
+            drivers[2].quit();
+            drivers[3].quit();
             gc.reset();
         }
 
@@ -354,10 +349,10 @@ class Tester {
             assertEquals("In Game, Round1, Player2's turn turn order:right(decrementing), next: 1", drivers[2].findElement(By.id("status")).getText());
             assertEquals("In Game, Round1, Player2's turn turn order:right(decrementing), next: 1", drivers[3].findElement(By.id("status")).getText());
             //teardown
-            drivers[0].close();
-            drivers[1].close();
-            drivers[2].close();
-            drivers[3].close();
+            drivers[0].quit();
+            drivers[1].quit();
+            drivers[2].quit();
+            drivers[3].quit();
             gc.reset();
         }
 
@@ -405,10 +400,10 @@ class Tester {
             assertEquals("In Game, Round1, Player2's turn turn order:left(incrementing), next: 3", drivers[3].findElement(By.id("status")).getText());
             //good stuff.
             //teardown
-            drivers[0].close();
-            drivers[1].close();
-            drivers[2].close();
-            drivers[3].close();
+            drivers[0].quit();
+            drivers[1].quit();
+            drivers[2].quit();
+            drivers[3].quit();
             gc.reset();
         }
         @Test
@@ -430,10 +425,10 @@ class Tester {
             assertEquals("KH", drivers[2].findElement(By.id("topCard")).getText());
             assertEquals("KH", drivers[3].findElement(By.id("topCard")).getText());
             //teardown
-            drivers[0].close();
-            drivers[1].close();
-            drivers[2].close();
-            drivers[3].close();
+            drivers[0].quit();
+            drivers[1].quit();
+            drivers[2].quit();
+            drivers[3].quit();
             gc.reset();
         }
         @Test
@@ -455,10 +450,10 @@ class Tester {
             assertEquals("7C", drivers[2].findElement(By.id("topCard")).getText());
             assertEquals("7C", drivers[3].findElement(By.id("topCard")).getText());
             //teardown
-            drivers[0].close();
-            drivers[1].close();
-            drivers[2].close();
-            drivers[3].close();
+            drivers[0].quit();
+            drivers[1].quit();
+            drivers[2].quit();
+            drivers[3].quit();
             gc.reset();
         }
         @Test
@@ -486,10 +481,10 @@ class Tester {
             assertEquals("8C", drivers[2].findElement(By.id("topCard")).getText());
             assertEquals("8C", drivers[3].findElement(By.id("topCard")).getText());
             //teardown
-            drivers[0].close();
-            drivers[1].close();
-            drivers[2].close();
-            drivers[3].close();
+            drivers[0].quit();
+            drivers[1].quit();
+            drivers[2].quit();
+            drivers[3].quit();
             gc.reset();
         }
         @Test
@@ -516,10 +511,10 @@ class Tester {
             assertEquals("KC", drivers[2].findElement(By.id("topCard")).getText());
             assertEquals("KC", drivers[3].findElement(By.id("topCard")).getText());
             //teardown
-            drivers[0].close();
-            drivers[1].close();
-            drivers[2].close();
-            drivers[3].close();
+            drivers[0].quit();
+            drivers[1].quit();
+            drivers[2].quit();
+            drivers[3].quit();
             gc.reset();
         }
         @Test
@@ -559,10 +554,10 @@ class Tester {
             assertEquals("6C", drivers[2].findElement(By.id("topCard")).getText());
             assertEquals("6C", drivers[3].findElement(By.id("topCard")).getText());
             //teardown
-            drivers[0].close();
-            drivers[1].close();
-            drivers[2].close();
-            drivers[3].close();
+            drivers[0].quit();
+            drivers[1].quit();
+            drivers[2].quit();
+            drivers[3].quit();
             gc.reset();
         }
         @Test
@@ -613,10 +608,10 @@ class Tester {
             assertEquals("5C", drivers[2].findElement(By.id("topCard")).getText());
             assertEquals("5C", drivers[3].findElement(By.id("topCard")).getText());
             //teardown
-            drivers[0].close();
-            drivers[1].close();
-            drivers[2].close();
-            drivers[3].close();
+            drivers[0].quit();
+            drivers[1].quit();
+            drivers[2].quit();
+            drivers[3].quit();
             gc.reset();
         }
         @Test
@@ -678,10 +673,10 @@ class Tester {
             assertEquals("7H", drivers[2].findElement(By.id("topCard")).getText());
             assertEquals("7H", drivers[3].findElement(By.id("topCard")).getText());
             //teardown
-            drivers[0].close();
-            drivers[1].close();
-            drivers[2].close();
-            drivers[3].close();
+            drivers[0].quit();
+            drivers[1].quit();
+            drivers[2].quit();
+            drivers[3].quit();
             gc.reset();
         }
         @Test
@@ -747,10 +742,10 @@ class Tester {
             assertEquals("In Game, Round1, Player2's turn turn order:left(incrementing), next: 3", drivers[2].findElement(By.id("status")).getText());
             assertEquals("In Game, Round1, Player2's turn turn order:left(incrementing), next: 3", drivers[3].findElement(By.id("status")).getText());
             //teardown
-            drivers[0].close();
-            drivers[1].close();
-            drivers[2].close();
-            drivers[3].close();
+            drivers[0].quit();
+            drivers[1].quit();
+            drivers[2].quit();
+            drivers[3].quit();
             gc.reset();
         }
         @Test
@@ -817,10 +812,10 @@ class Tester {
             assertEquals("In Game, Round1, Player2's turn turn order:left(incrementing), next: 3", drivers[2].findElement(By.id("status")).getText());
             assertEquals("In Game, Round1, Player2's turn turn order:left(incrementing), next: 3", drivers[3].findElement(By.id("status")).getText());
             //teardown
-            drivers[0].close();
-            drivers[1].close();
-            drivers[2].close();
-            drivers[3].close();
+            drivers[0].quit();
+            drivers[1].quit();
+            drivers[2].quit();
+            drivers[3].quit();
             gc.reset();
         }
         @Test
@@ -867,10 +862,10 @@ class Tester {
             assertEquals("6C", drivers[2].findElement(By.id("topCard")).getText());
             assertEquals("6C", drivers[3].findElement(By.id("topCard")).getText());
             //teardown
-            drivers[0].close();
-            drivers[1].close();
-            drivers[2].close();
-            drivers[3].close();
+            drivers[0].quit();
+            drivers[1].quit();
+            drivers[2].quit();
+            drivers[3].quit();
             gc.reset();
         }
     }
