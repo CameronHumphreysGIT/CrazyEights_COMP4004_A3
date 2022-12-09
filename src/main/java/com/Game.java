@@ -4,6 +4,9 @@ import com.beust.ah.A;
 
 import java.util.ArrayList;
 
+import static com.Config.MAX_HAND;
+import static com.Config.START_HAND;
+
 public class Game {
     ArrayList<Player> playerList = new ArrayList<>();
     Deck deck = new Deck();
@@ -11,7 +14,6 @@ public class Game {
     int currentTurn;
     int round = 0;
     boolean isLeft = true;
-    public final int MAX_HAND = 5;
 
     public Game() {
     }
@@ -24,7 +26,7 @@ public class Game {
             p.setCards(new ArrayList<String>());
         }
         //deal cards to players
-        for (int i =0; i < MAX_HAND; i++) {
+        for (int i =0; i < START_HAND; i++) {
             for (int j =0; j < playerList.size(); j++) {
                 playerList.get(j).deal(deck.dealCard());
             }

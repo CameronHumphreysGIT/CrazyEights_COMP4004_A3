@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public abstract class GameMessage {
     //framework for all messages passed to users during the game
-    String[] cards = new String[5];
+    String[] cards = new String[com.Config.MAX_HAND];
     int cardCount = 0;
 
     public GameMessage(Game g, int player) {

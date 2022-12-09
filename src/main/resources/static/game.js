@@ -4,6 +4,9 @@ var number = null;
 var response = false;
 var connectionStage = 0;
 var next;
+var draw;
+var maxHand;
+var played = false;
 const lastMessage = {to:"someone", content:"something"};
 
 function main() {
@@ -39,6 +42,7 @@ function waitNextStage(expected) {
 function showWelcome(message) {
     connectionStage = 1;
     number = message.number;
+    draw = message.draw;
     $("#welcome").html("Welcome " + message.name + " to Crazy Eights, you are Player" + number);
     $("#status").html("Waiting...0 other players");
     //got welcome, resubscribe to our personal message board
@@ -136,7 +140,7 @@ function showGame(message) {
             if (!$( "#draw" ).prop("disabled") && hasPlayable) {
                 //means we have already drawn, and we must play the first playable card
                 $( "#draw" ).prop( "disabled", true);
-            }else {
+            }else if(message.cardCount != maxHand)    {
                 $( "#draw" ).prop( "disabled", false);
             }
             //we don't want to reset all that hard work
@@ -154,9 +158,14 @@ function setGameInfo(message) {
     }
     $("#deck").html(message.deckCount);
     $("#topCard").html(message.topCard);
+    if (!played) {
+        //haven't played any cards, means cardCount = starting hand
+        maxHand = message.cardCount + draw;
+    }
 }
 
 function playCard(event) {
+    var played = true;
     var response = $("#card" + (event.data.id)).text();
     if (response[0] == '8') {
         //prompt for a suit
