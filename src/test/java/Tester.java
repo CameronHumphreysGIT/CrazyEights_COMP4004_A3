@@ -823,6 +823,56 @@ class Tester {
             drivers[3].close();
             gc.reset();
         }
+        @Test
+        @DisplayName("63Test")
+        void SixtyThreeTest() {
+            //have four players join
+            WebDriver[] drivers = fourPlayersJoin(new String[]{"Cam", "Matt", "Alexander", "Cierra"});
+            //set the top card so we can play
+            gc.setTopCard("7C");
+            gc.setCards(new ArrayList<>(Arrays.asList("KS", "3C")), 1);
+            //set the next card we will draw
+            gc.setDraw("6C");
+            gc.refresh();
+            //check that it is playable
+            try {
+                assertTrue(drivers[0].findElement(By.xpath("//button[text()='3C']")).isDisplayed());
+            } catch (NoSuchElementException e) {
+                //bad
+                fail();
+            }
+            //click the draw button
+            drivers[0].findElement(By.id("draw")).click();
+            //we get 6C, show it...
+            try {
+                assertTrue(drivers[0].findElement(By.xpath("//button[text()='6C']")).isDisplayed());
+            } catch (NoSuchElementException e) {
+                //bad
+                fail();
+            }
+            //now we must play 6C, 3C should not be findable
+            try {
+                assertFalse(drivers[0].findElement(By.xpath("//button[text()='3C']")).isDisplayed());
+            } catch (NoSuchElementException e) {
+                //good
+                assertTrue(true);
+            }
+            //make sure we no longer can draw cards...
+            assertFalse(drivers[0].findElement(By.id("draw")).isEnabled());
+            //choose it.
+            drivers[0].findElement(By.xpath("//button[text()='6C']")).click();
+            //check that we didn't change the top card
+            assertEquals("6C", drivers[0].findElement(By.id("topCard")).getText());
+            assertEquals("6C", drivers[1].findElement(By.id("topCard")).getText());
+            assertEquals("6C", drivers[2].findElement(By.id("topCard")).getText());
+            assertEquals("6C", drivers[3].findElement(By.id("topCard")).getText());
+            //teardown
+            drivers[0].close();
+            drivers[1].close();
+            drivers[2].close();
+            drivers[3].close();
+            gc.reset();
+        }
     }
     //helpers
     WebDriver playerJoin(String name, int num) {
