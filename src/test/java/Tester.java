@@ -868,9 +868,6 @@ class Tester {
             drivers[3].quit();
             gc.reset();
         }
-        //we basically need to postpone the draw logic until after the 2 cards are drawn...
-        //in game, nothing is playable until the two draws have happened.
-        //in .js we
         @Test
         @DisplayName("67Test")
         void SixtySevenTest() {
@@ -915,6 +912,81 @@ class Tester {
                 assertTrue(drivers[1].findElement(By.id("draw")).isDisplayed());
             } catch (NoSuchElementException e) {
                 fail();
+            }
+            //play it.
+            drivers[1].findElement(By.xpath("//button[text()='6C']")).click();
+            //check that we did change the top card
+            assertEquals("6C", drivers[0].findElement(By.id("topCard")).getText());
+            assertEquals("6C", drivers[1].findElement(By.id("topCard")).getText());
+            assertEquals("6C", drivers[2].findElement(By.id("topCard")).getText());
+            assertEquals("6C", drivers[3].findElement(By.id("topCard")).getText());
+            //next turn
+            assertEquals("In Game, Round1, Player3's turn turn order:left(incrementing), next: 4", drivers[0].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player3's turn turn order:left(incrementing), next: 4", drivers[1].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player3's turn turn order:left(incrementing), next: 4", drivers[2].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player3's turn turn order:left(incrementing), next: 4", drivers[3].findElement(By.id("status")).getText());
+            //teardown
+            drivers[0].quit();
+            drivers[1].quit();
+            drivers[2].quit();
+            drivers[3].quit();
+            gc.reset();
+        }
+        @Test
+        @DisplayName("68Test")
+        void SixtyEightTest() {
+            //have four players join
+            WebDriver[] drivers = fourPlayersJoin(new String[]{"Cam", "Matt", "Alexander", "Cierra"});
+            //set the top card so we can play
+            gc.setTopCard("6C");
+            gc.setCards(new ArrayList<>(Arrays.asList("5D", "2C")), 1);
+            gc.setCards(new ArrayList<>(Arrays.asList("4H")), 2);
+            //set the next card we will draw
+            gc.setDraw("6S");
+            gc.refresh();
+            //player 1 plays the 2C
+            drivers[0].findElement(By.xpath("//button[text()='2C']")).click();
+            //player 2 must draw cards
+            //click the draw button
+            drivers[1].findElement(By.id("draw")).click();
+            //we get 6C, show it...
+            try {
+                assertTrue(drivers[1].findElement(By.xpath("//button[text()='6S']")).isDisplayed());
+            } catch (NoSuchElementException e) {
+                //good, isn't playable yet.
+                assertTrue(true);
+            }
+            gc.setDraw("9D");
+            drivers[1].findElement(By.id("draw")).click();
+            //make sure we can't play it
+            try {
+                assertTrue(drivers[1].findElement(By.xpath("//button[text()='9D']")).isDisplayed());
+            } catch (NoSuchElementException e) {
+                //good
+                assertTrue(true);
+            }
+            gc.setDraw("9H");
+            drivers[1].findElement(By.id("draw")).click();
+            //make sure we can't play it
+            try {
+                assertTrue(drivers[1].findElement(By.xpath("//button[text()='9H']")).isDisplayed());
+            } catch (NoSuchElementException e) {
+                //good
+                assertTrue(true);
+            }
+            gc.setDraw("6C");
+            drivers[1].findElement(By.id("draw")).click();
+            //make sure we can now play the 6C
+            try {
+                assertTrue(drivers[1].findElement(By.xpath("//button[text()='6C']")).isDisplayed());
+            } catch (NoSuchElementException e) {
+                fail();
+            }
+            //make sure we couldn't draw if we wanted.
+            try {
+                assertTrue(drivers[1].findElement(By.id("draw")).isDisplayed());
+            } catch (NoSuchElementException e) {
+                assertTrue(true);
             }
             //play it.
             drivers[1].findElement(By.xpath("//button[text()='6C']")).click();
