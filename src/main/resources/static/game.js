@@ -52,7 +52,7 @@ function showStatus(message) {
     if (message.content !== "") {
         connectionStage = 3;
         $("#status").html("In Game, Round" + message.round + ", Player" + message.content + "'s turn " + "turn order:" + message.dir + ", next: " + message.next);
-        if (next && (message.content !== number)) {
+        if (next && (message.content != number)) {
             alert("Previous player played a queen, you were Skipped");
         }
         next = (number == message.next);
