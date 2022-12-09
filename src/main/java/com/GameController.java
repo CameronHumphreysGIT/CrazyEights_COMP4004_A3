@@ -64,6 +64,7 @@ public class GameController {
         if (!rm.getResponse().equals("")) {
             //player wants an update or to draw a card
             if (rm.getResponse().equals("draw")) {
+                System.out.println("player is drawing card" + pId);
                 g.drawCard(pId);
             }
             //player specifically asking for an update, it's this players turn

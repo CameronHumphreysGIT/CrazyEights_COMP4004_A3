@@ -18,6 +18,12 @@ function main() {
               showStatus(JSON.parse(message.body));
        }, {id: "lobby"});
    });
+   //set the click func for draw here.
+   $("#draw").click(function() {
+       console.log("clicked the draw button");
+       //send response
+       stompClient.send("/app/" + number, {}, JSON.stringify({"response": "draw"}));
+   });
 }
 
 function waitNextStage(expected) {
@@ -114,8 +120,10 @@ function showGame(message) {
             connectionStage = 5;
             console.log("constructing buttons...");
             $("#cards").empty();
+            var hasPlayable = false;
             for (var i=0; i < message.cardCount; i++) {
                 if (message.playable.includes(i)) {
+                    hasPlayable = true;
                     //this means this card is playable, make it a button
                     $("#cards").append('<button id="card' + (i+1) + '" class="btn btn-default" type="submit">' + message.cards[i] + '</button>');
                     //set click function
@@ -124,15 +132,13 @@ function showGame(message) {
                     $("#cards").append('<p id="card' + (i+1) + '" style="display:inline">' + message.cards[i] + ' </p>');
                 }
             }
-            //create the draw button
-            $( "#draw" ).prop( "disabled", false);
-            //set the click func
-            $("#draw").click(function() {
-                //send response
-                stompClient.send("/app/" + number, {}, JSON.stringify({"response": "draw"}));
-                //disable, we will get a response updating our cards...
+            //create the draw button, maybe
+            if (!$( "#draw" ).prop("disabled") && hasPlayable) {
+                //means we have already drawn, and we must play the first playable card
                 $( "#draw" ).prop( "disabled", true);
-            });
+            }else {
+                $( "#draw" ).prop( "disabled", false);
+            }
             //we don't want to reset all that hard work
             return;
         }
