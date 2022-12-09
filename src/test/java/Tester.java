@@ -411,7 +411,6 @@ class Tester {
             drivers[3].close();
             gc.reset();
         }
-
         @Test
         @DisplayName("51Test")
         void FiftyOneTest() {
@@ -430,6 +429,31 @@ class Tester {
             assertEquals("KH", drivers[1].findElement(By.id("topCard")).getText());
             assertEquals("KH", drivers[2].findElement(By.id("topCard")).getText());
             assertEquals("KH", drivers[3].findElement(By.id("topCard")).getText());
+            //teardown
+            drivers[0].close();
+            drivers[1].close();
+            drivers[2].close();
+            drivers[3].close();
+            gc.reset();
+        }
+        @Test
+        @DisplayName("52Test")
+        void FiftyTwoTest() {
+            //have four players join
+            WebDriver[] drivers = fourPlayersJoin(new String[]{"Cam", "Matt", "Alexander", "Cierra"});
+            //set the top card so we can play 3C
+            gc.setTopCard("KC");
+            gc.setCards(new ArrayList<>(Arrays.asList("5H", "KH", "7C", "9S", "JD")), 1);
+            gc.refresh();
+            //check that it's playable
+            assertNotEquals(0, drivers[0].findElement(By.xpath("//button[text()='7C']")).getSize());
+            //then, play that card:
+            drivers[0].findElement(By.xpath("//button[text()='7C']")).click();
+            //check that we changed the top card
+            assertEquals("7C", drivers[0].findElement(By.id("topCard")).getText());
+            assertEquals("7C", drivers[1].findElement(By.id("topCard")).getText());
+            assertEquals("7C", drivers[2].findElement(By.id("topCard")).getText());
+            assertEquals("7C", drivers[3].findElement(By.id("topCard")).getText());
             //teardown
             drivers[0].close();
             drivers[1].close();
