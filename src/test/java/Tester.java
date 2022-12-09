@@ -619,6 +619,71 @@ class Tester {
             drivers[3].close();
             gc.reset();
         }
+        @Test
+        @DisplayName("60Test")
+        void SixtyTest() {
+            //have four players join
+            WebDriver[] drivers = fourPlayersJoin(new String[]{"Cam", "Matt", "Alexander", "Cierra"});
+            //set the top card so we can play 3C
+            gc.setTopCard("7C");
+            gc.setCards(new ArrayList<>(Arrays.asList("3H")), 1);
+            //set the next card we will draw
+            gc.setDraw("6D");
+            gc.refresh();
+            //check that it's not playable
+            try {
+                assertTrue(drivers[0].findElement(By.xpath("//button[text()='3H']")).isDisplayed());
+            } catch (NoSuchElementException e) {
+                //good
+                assertTrue(true);
+            }
+            //click the draw button
+            drivers[0].findElement(By.id("draw")).click();
+            //we get 6D, show it...
+            try {
+                assertTrue(drivers[0].findElement(By.xpath("//button[text()='6D']")).isDisplayed());
+            } catch (NoSuchElementException e) {
+                //good
+                assertTrue(true);
+            }
+            //got the 6 of diamonds, set before we draw again.
+            gc.setDraw("5S");
+            //draw the 5 of spades
+            drivers[0].findElement(By.id("draw")).click();
+            //make sure we can't play it
+            try {
+                assertTrue(drivers[0].findElement(By.xpath("//button[text()='5S']")).isDisplayed());
+            } catch (NoSuchElementException e) {
+                //good
+                assertTrue(true);
+            }
+            //got the 5 of spades, set before we draw again.
+            gc.setDraw("7H");
+            //draw the 7 of hearts
+            drivers[0].findElement(By.id("draw")).click();
+            //make sure we can't play it
+            try {
+                assertTrue(drivers[0].findElement(By.xpath("//button[text()='7H']")).isDisplayed());
+            } catch (NoSuchElementException e) {
+                //bad
+                fail();
+            }
+            //make sure we no longer can draw cards...
+            assertFalse(drivers[0].findElement(By.id("draw")).isEnabled());
+            //play the 7H (it's the only button on the page)
+            drivers[0].findElement(By.xpath("//button[text()='7H']")).click();
+            //check that we did change the top card
+            assertEquals("7H", drivers[0].findElement(By.id("topCard")).getText());
+            assertEquals("7H", drivers[1].findElement(By.id("topCard")).getText());
+            assertEquals("7H", drivers[2].findElement(By.id("topCard")).getText());
+            assertEquals("7H", drivers[3].findElement(By.id("topCard")).getText());
+            //teardown
+            drivers[0].close();
+            drivers[1].close();
+            drivers[2].close();
+            drivers[3].close();
+            gc.reset();
+        }
     }
     //helpers
     WebDriver playerJoin(String name, int num) {
