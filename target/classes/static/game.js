@@ -3,6 +3,7 @@ var stompClient = null;
 var number = null;
 var response = false;
 var connectionStage = 0;
+var next;
 const lastMessage = {to:"someone", content:"something"};
 
 function main() {
@@ -51,6 +52,10 @@ function showStatus(message) {
     if (message.content !== "") {
         connectionStage = 3;
         $("#status").html("In Game, Round" + message.round + ", Player" + message.content + "'s turn " + "turn order:" + message.dir + ", next: " + message.next);
+        if (next && (message.content !== number)) {
+            alert("Previous player played a queen, you were Skipped");
+        }
+        next = (number == message.next);
         stompClient.send("/app/" + number, {}, JSON.stringify({"response":""}));
         lastMessage.to = "/app/" + number;
         lastMessage.content = {"response":""};

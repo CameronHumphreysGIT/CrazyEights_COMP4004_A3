@@ -52,6 +52,10 @@ public class Game {
             isLeft = false;
         }
         currentTurn = nextTurn();
+        if (card.charAt(0) == 'Q') {
+            //skip them
+            currentTurn = nextTurn();
+        }
     }
 
     public void addPlayer(Player p) {
