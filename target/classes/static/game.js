@@ -52,7 +52,8 @@ function showStatus(message) {
     if (message.content !== "") {
         connectionStage = 3;
         $("#status").html("In Game, Round" + message.round + ", Player" + message.content + "'s turn " + "turn order:" + message.dir + ", next: " + message.next);
-        if (next && (message.content != number)) {
+        //TODO consider making a unique alert for aces
+        if (next && (message.content != number) && $("#topCard").text()[0] == 'Q') {
             alert("Previous player played a queen, you were Skipped");
         }
         next = (number == message.next);
@@ -141,7 +142,6 @@ function setGameInfo(message) {
 }
 
 function playCard(event) {
-    //TODO current issue: this click func doesn't work, sends an empty response text, not undefined, empty.
     var response = $("#card" + (event.data.id)).text();
     console.log("sending: " + "#card" + (event.data.id)  + " res: "+ response);
     //send the response as the card string

@@ -33,6 +33,9 @@ public class Game {
     }
 
     public boolean isPlayable(String card) {
+        if (card == null) {
+            return false;
+        }
         //check if the card is currently playable
         if (card.charAt(0) == '8') {
             return true;
