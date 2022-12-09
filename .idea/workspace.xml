@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2438256d-87bb-49a9-b89b-7f1640c5e2be" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Tester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/game.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/Tester$AcceptanceTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Tester$AcceptanceTests.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/Tester.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Tester.class" afterDir="false" />
     </list>
@@ -47,7 +50,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.Tester$AcceptanceTests.FortyFiveTest">
+  <component name="RunManager" selected="JUnit.Tester$AcceptanceTests.FortySixTest">
     <configuration name="CrazyEightsApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.CrazyEightsApplication" />
       <module name="CrazyEights_COMP4004_A3" />
@@ -75,11 +78,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tester$AcceptanceTests.FortyOneTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Tester$AcceptanceTests.FortySixTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CrazyEights_COMP4004_A3" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="Tester$AcceptanceTests" />
-      <option name="METHOD_NAME" value="FortyOneTest" />
+      <option name="METHOD_NAME" value="FortySixTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -97,11 +100,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.Tester$AcceptanceTests.FortySixTest" />
         <item itemvalue="JUnit.Tester$AcceptanceTests.FortyFiveTest" />
         <item itemvalue="JUnit.Tester$AcceptanceTests.FortyFourTest" />
         <item itemvalue="JUnit.Tester$AcceptanceTests.FortyTwoTest" />
         <item itemvalue="Application.CrazyEightsApplication" />
-        <item itemvalue="JUnit.Tester$AcceptanceTests.FortyOneTest" />
       </list>
     </recent_temporary>
   </component>
@@ -162,25 +165,25 @@
     </state>
     <state x="636" y="268" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1670442586359" />
     <state x="1060" y="456" key="FileChooserDialogImpl/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670261225914" />
-    <state width="1493" height="608" key="GridCell.Tab.0.bottom" timestamp="1670552746001">
+    <state width="1493" height="545" key="GridCell.Tab.0.bottom" timestamp="1670553875191">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="608" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1670552746001" />
+    <state width="1493" height="545" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1670553875191" />
     <state width="2517" height="506" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670292642771" />
-    <state width="1493" height="608" key="GridCell.Tab.0.center" timestamp="1670552746000">
+    <state width="1493" height="545" key="GridCell.Tab.0.center" timestamp="1670553875191">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="608" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1670552746000" />
+    <state width="1493" height="545" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1670553875191" />
     <state width="2517" height="506" key="GridCell.Tab.0.center/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670292642771" />
-    <state width="1493" height="608" key="GridCell.Tab.0.left" timestamp="1670552746000">
+    <state width="1493" height="545" key="GridCell.Tab.0.left" timestamp="1670553875190">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="608" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1670552746000" />
+    <state width="1493" height="545" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1670553875190" />
     <state width="2517" height="506" key="GridCell.Tab.0.left/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670292642771" />
-    <state width="1493" height="608" key="GridCell.Tab.0.right" timestamp="1670552746000">
+    <state width="1493" height="545" key="GridCell.Tab.0.right" timestamp="1670553875191">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="608" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1670552746000" />
+    <state width="1493" height="545" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1670553875191" />
     <state width="2517" height="506" key="GridCell.Tab.0.right/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670292642771" />
     <state width="2517" height="502" key="GridCell.Tab.1.bottom" timestamp="1670274392038">
       <screen x="0" y="0" width="2560" height="1400" />

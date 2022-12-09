@@ -292,6 +292,50 @@ class Tester {
             drivers[3].close();
             gc.reset();
         }
+        @Test
+        @DisplayName("46Test")
+        void FortySixTest() {
+            //have four players join
+            WebDriver[] drivers = fourPlayersJoin(new String[] {"Cam", "Matt", "Alexander", "Cierra"});
+            //set the top card so we can play 3C
+            gc.setTopCard("6H");
+            gc.setCards(new ArrayList<>(Arrays.asList("5H", "KD", "7H", "9S", "JD")), 1);
+            gc.setCards(new ArrayList<>(Arrays.asList("5H", "KD", "JH", "9S", "JD")), 2);
+            gc.setCards(new ArrayList<>(Arrays.asList("7H", "KD", "2H", "9S", "JD")), 3);
+            gc.setCards(new ArrayList<>(Arrays.asList("5H", "KD", "AH", "9S", "JD")), 4);
+            gc.refresh();
+            //everyone plays in sequence
+            drivers[0].findElement(By.xpath("//button[text()='7H']")).click();
+            drivers[1].findElement(By.xpath("//button[text()='JH']")).click();
+            drivers[2].findElement(By.xpath("//button[text()='2H']")).click();
+            assertEquals("In Game, Round1, Player4's turn turn order:left(incrementing), next: 1", drivers[0].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player4's turn turn order:left(incrementing), next: 1", drivers[1].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player4's turn turn order:left(incrementing), next: 1", drivers[2].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player4's turn turn order:left(incrementing), next: 1", drivers[3].findElement(By.id("status")).getText());
+            drivers[3].findElement(By.xpath("//button[text()='AH']")).click();
+            //check that we changed the top card
+            assertEquals("AH", drivers[0].findElement(By.id("topCard")).getText());
+            assertEquals("AH", drivers[1].findElement(By.id("topCard")).getText());
+            assertEquals("AH", drivers[2].findElement(By.id("topCard")).getText());
+            assertEquals("AH", drivers[3].findElement(By.id("topCard")).getText());
+            //check that the player has changed to player 2
+            assertEquals("In Game, Round1, Player3's turn turn order:right(decrementing), next: 2", drivers[0].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player3's turn turn order:right(decrementing), next: 2", drivers[1].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player3's turn turn order:right(decrementing), next: 2", drivers[2].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player3's turn turn order:right(decrementing), next: 2", drivers[3].findElement(By.id("status")).getText());
+            //p3 plays the 7H
+            drivers[2].findElement(By.xpath("//button[text()='7H']")).click();
+            assertEquals("In Game, Round1, Player2's turn turn order:right(decrementing), next: 1", drivers[0].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player2's turn turn order:right(decrementing), next: 1", drivers[1].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player2's turn turn order:right(decrementing), next: 1", drivers[2].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player2's turn turn order:right(decrementing), next: 1", drivers[3].findElement(By.id("status")).getText());
+            //teardown
+            drivers[0].close();
+            drivers[1].close();
+            drivers[2].close();
+            drivers[3].close();
+            gc.reset();
+        }
     }
     //helpers
     WebDriver playerJoin(String name, int num) {
