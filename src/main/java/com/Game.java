@@ -37,7 +37,8 @@ public class Game {
             return false;
         }
         //check if the card is currently playable
-        if (card.charAt(0) == '8') {
+        //this works as my 1's are A instead of 10
+        if (card.charAt(0) == '8' || card.charAt(0) == topCard.charAt(0)) {
             return true;
         }
         //same suit, use card.length since sometimes we have 10's
