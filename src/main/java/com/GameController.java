@@ -78,8 +78,13 @@ public class GameController {
     @MessageMapping("/play/{playerId}")
     @SendTo("/topic/lobby")
     public StatusMessage play(@DestinationVariable("playerId") int pId, ResponseMessage rm) throws Exception {
+        int round = g.getRound();
         //player played a card, put it in the Game
         g.play(rm.getResponse(), pId);
+        if (round != g.getRound()) {
+            //send round over message
+            return new StatusMessage("over", g.getRound());
+        }
         //send new status message
         return new StatusMessage(g);
     }

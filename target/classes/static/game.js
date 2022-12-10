@@ -66,6 +66,13 @@ function showStatus(message) {
     connectionStage = 2;
     if (message.content !== "") {
         connectionStage = 3;
+        if (message.content == "over") {
+            $("#status").html("Round" + message.round + " over, scoring...");
+            if (number == 1) {
+                stompClient.send("/app/lobby/", {}, JSON.stringify({"response":"scores"}));
+            }
+            return;
+        }
         $("#status").html("In Game, Round" + message.round + ", Player" + message.content + "'s turn " + "turn order:" + message.dir + ", next: " + message.next);
         //added message.next != number since this alert would go off if someone played twice (which can happen)
         if (next && (message.content != number) && (message.next != number)) {

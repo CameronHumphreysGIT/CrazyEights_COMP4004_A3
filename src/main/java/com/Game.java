@@ -9,21 +9,27 @@ import static com.Config.*;
 public class Game {
     ArrayList<Player> playerList = new ArrayList<>();
     //list of all cards that have been drawn by a player, if it's their turn.
-    String drawn = "";
-    int draws = 0;
-    Deck deck = new Deck();
+    String drawn;
+    int draws;
+    Deck deck;
     String topCard;
     int currentTurn;
-    int round = 0;
-    boolean isLeft = true;
-    int twos = 0;
+    int round = 1;
+    boolean isLeft;
+    int twos;
     ArrayList<String> sequence = new ArrayList<>();
+    int[] scores = new int[4];
 
     public Game() {
     }
 
     public void startRound() {
-        round++;
+        drawn = "";
+        draws = 0;
+        deck = new Deck();
+        isLeft = true;
+        twos = 0;
+        sequence = new ArrayList<>();
         currentTurn = round;
         //empty every player's hand
         for (Player p : playerList) {
@@ -90,6 +96,15 @@ public class Game {
             //skip them
             currentTurn = nextTurn();
         }
+        if (playerList.get(player - 1).getCards().isEmpty()) {
+            //good stuff. round is over.
+            round++;
+            scorePlayers();
+        }
+    }
+
+    public void scorePlayers() {
+
     }
 
     public boolean playableSequence(int player) {

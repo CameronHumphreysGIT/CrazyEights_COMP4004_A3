@@ -10,6 +10,13 @@ public class StatusMessage {
     private String next;
     private int players;
 
+    public StatusMessage(String g, int r) {
+        //round over status.
+        content = g;
+        //r - 1 is the previous round (round has already incremented)
+        round = r - 1;
+    }
+
     public StatusMessage(int p) {
         content = "";
         players = p;
