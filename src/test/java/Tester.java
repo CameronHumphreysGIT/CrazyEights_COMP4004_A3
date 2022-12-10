@@ -1418,6 +1418,45 @@ class Tester {
             drivers = null;
             gc.reset();
         }
+        @Test
+        @DisplayName("77Test")
+        void SeventySevenTest() {
+            //have four players join
+            WebDriver[] drivers = fourPlayersJoin(new String[]{"Cam", "Matt", "Alexander", "Cierra"});
+            //set the top card so we can play
+            gc.setTopCard("3C");
+            gc.setCards(new ArrayList<>(Arrays.asList("AS", "6C")), 1);
+            gc.setCards(new ArrayList<>(Arrays.asList("4C")), 2);
+            gc.setCards(new ArrayList<>(Arrays.asList("8H", "JH", "6H", "KH", "KS")), 3);
+            gc.setCards(new ArrayList<>(Arrays.asList("8C", "8D", "2D")), 4);
+            gc.refresh();
+            //player 1 plays the 6C
+            drivers[0].findElement(By.xpath("//button[text()='6C']")).click();
+            //play 1 plays to end game
+            drivers[1].findElement(By.xpath("//button[text()='4C']")).click();
+            //Round over
+            assertEquals("In Game, Round2, Player2's turn turn order:left(incrementing), next: 3", drivers[0].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round2, Player2's turn turn order:left(incrementing), next: 3", drivers[1].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round2, Player2's turn turn order:left(incrementing), next: 3", drivers[2].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round2, Player2's turn turn order:left(incrementing), next: 3", drivers[3].findElement(By.id("status")).getText());
+            //wait a little;
+            myWait(2);
+            assertEquals("1 1 0 86 102", drivers[0].findElement(By.id("Round1")).getText());
+            assertEquals("1 1 0 86 102", drivers[1].findElement(By.id("Round1")).getText());
+            assertEquals("1 1 0 86 102", drivers[2].findElement(By.id("Round1")).getText());
+            assertEquals("1 1 0 86 102", drivers[3].findElement(By.id("Round1")).getText());
+            //teardown
+            drivers[0].quit();
+            drivers[1].quit();
+            drivers[2].quit();
+            drivers[3].quit();
+            drivers[0] = null;
+            drivers[1] = null;
+            drivers[2] = null;
+            drivers[3] = null;
+            drivers = null;
+            gc.reset();
+        }
     }
     //helpers
     WebDriver playerJoin(String name, int num) {
