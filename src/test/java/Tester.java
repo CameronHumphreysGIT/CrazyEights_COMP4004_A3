@@ -308,7 +308,7 @@ class Tester {
             gc.setTopCard("6H");
             gc.setCards(new ArrayList<>(Arrays.asList("5H", "KD", "7H", "9S", "JD")), 1);
             gc.setCards(new ArrayList<>(Arrays.asList("5H", "KD", "JH", "9S", "JD")), 2);
-            gc.setCards(new ArrayList<>(Arrays.asList("7H", "KD", "2H", "9S", "JD")), 3);
+            gc.setCards(new ArrayList<>(Arrays.asList("7H", "KD", "4H", "9S", "JD")), 3);
             gc.setCards(new ArrayList<>(Arrays.asList("5H", "KD", "AH", "9S", "JD")), 4);
             gc.refresh();
             //everyone plays in sequence
@@ -316,7 +316,7 @@ class Tester {
             myWait(1);
             drivers[1].findElement(By.xpath("//button[text()='JH']")).click();
             myWait(1);
-            drivers[2].findElement(By.xpath("//button[text()='2H']")).click();
+            drivers[2].findElement(By.xpath("//button[text()='4H']")).click();
             myWait(1);
             assertEquals("In Game, Round1, Player4's turn turn order:left(incrementing), next: 1", drivers[0].findElement(By.id("status")).getText());
             assertEquals("In Game, Round1, Player4's turn turn order:left(incrementing), next: 1", drivers[1].findElement(By.id("status")).getText());
@@ -365,7 +365,7 @@ class Tester {
             gc.setTopCard("6C");
             gc.setCards(new ArrayList<>(Arrays.asList("5H", "KD", "7C", "9S", "JD")), 1);
             gc.setCards(new ArrayList<>(Arrays.asList("5H", "KD", "JC", "9S", "JD")), 2);
-            gc.setCards(new ArrayList<>(Arrays.asList("7H", "KD", "2C", "9S", "JD")), 3);
+            gc.setCards(new ArrayList<>(Arrays.asList("7H", "KD", "4C", "9S", "JD")), 3);
             gc.setCards(new ArrayList<>(Arrays.asList("5H", "KD", "QC", "9S", "JD")), 4);
             gc.refresh();
             //everyone plays in sequence
@@ -373,7 +373,7 @@ class Tester {
             myWait(1);
             drivers[1].findElement(By.xpath("//button[text()='JC']")).click();
             myWait(1);
-            drivers[2].findElement(By.xpath("//button[text()='2C']")).click();
+            drivers[2].findElement(By.xpath("//button[text()='4C']")).click();
             myWait(1);
             //check that it's playable
             assertNotEquals(0, drivers[3].findElement(By.xpath("//button[text()='QC']")).getSize());
@@ -1198,6 +1198,64 @@ class Tester {
             assertEquals("In Game, Round1, Player4's turn turn order:left(incrementing), next: 1", drivers[1].findElement(By.id("status")).getText());
             assertEquals("In Game, Round1, Player4's turn turn order:left(incrementing), next: 1", drivers[2].findElement(By.id("status")).getText());
             assertEquals("In Game, Round1, Player4's turn turn order:left(incrementing), next: 1", drivers[3].findElement(By.id("status")).getText());
+            //teardown
+            drivers[0].quit();
+            drivers[1].quit();
+            drivers[2].quit();
+            drivers[3].quit();
+            gc.reset();
+        }
+        //changes:
+        //conditionally cannot draw at all (easy)
+        //must change the isPlayable.
+        //must change endTurn.
+        @Test
+        @DisplayName("72Test")
+        void SeventyTwoTest() {
+            //have four players join
+            WebDriver[] drivers = fourPlayersJoin(new String[]{"Cam", "Matt", "Alexander", "Cierra"});
+            //set the top card so we can play
+            gc.setTopCard("6C");
+            gc.setCards(new ArrayList<>(Arrays.asList("5D", "2C")), 1);
+            gc.setCards(new ArrayList<>(Arrays.asList("4C", "6C", "9D")), 2);
+            gc.refresh();
+            //player 1 plays the 2C
+            drivers[0].findElement(By.xpath("//button[text()='2C']")).click();
+            //player 2 can't draw cards
+            try {
+                assertTrue(drivers[1].findElement(By.id("draw")).isDisplayed());
+            } catch (NoSuchElementException e) {
+                assertTrue(true);
+            }
+            //player 2 can play 4C and 6C
+            try {
+                assertTrue(drivers[1].findElement(By.xpath("//button[text()='4C']")).isDisplayed());
+            } catch (NoSuchElementException e) {
+                fail();
+            }
+            try {
+                assertTrue(drivers[1].findElement(By.xpath("//button[text()='6C']")).isDisplayed());
+            } catch (NoSuchElementException e) {
+                fail();
+            }
+            //play dem cards
+            drivers[1].findElement(By.xpath("//button[text()='6C']")).click();
+            try {
+                assertTrue(drivers[1].findElement(By.id("draw")).isDisplayed());
+            } catch (NoSuchElementException e) {
+                assertTrue(true);
+            }
+            drivers[1].findElement(By.xpath("//button[text()='4C']")).click();
+            //check that we did change the top card
+            assertEquals("4C", drivers[0].findElement(By.id("topCard")).getText());
+            assertEquals("4C", drivers[1].findElement(By.id("topCard")).getText());
+            assertEquals("4C", drivers[2].findElement(By.id("topCard")).getText());
+            assertEquals("4C", drivers[3].findElement(By.id("topCard")).getText());
+            //next turn
+            assertEquals("In Game, Round1, Player3's turn turn order:left(incrementing), next: 4", drivers[0].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player3's turn turn order:left(incrementing), next: 4", drivers[1].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player3's turn turn order:left(incrementing), next: 4", drivers[2].findElement(By.id("status")).getText());
+            assertEquals("In Game, Round1, Player3's turn turn order:left(incrementing), next: 4", drivers[3].findElement(By.id("status")).getText());
             //teardown
             drivers[0].quit();
             drivers[1].quit();
