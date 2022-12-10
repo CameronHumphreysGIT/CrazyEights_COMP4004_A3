@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2438256d-87bb-49a9-b89b-7f1640c5e2be" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Messages/StartMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Messages/StartMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Messages/UpdateMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Messages/UpdateMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/game.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Tester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tester.java" afterDir="false" />
     </list>
@@ -48,7 +49,39 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.Tester$AcceptanceTests.SeventyTest">
+  <component name="RunManager" selected="JUnit.Tester$AcceptanceTests">
+    <configuration name="CrazyEightsApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.CrazyEightsApplication" />
+      <module name="CrazyEights_COMP4004_A3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tester$AcceptanceTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CrazyEights_COMP4004_A3" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Tester$AcceptanceTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tester$AcceptanceTests.FiftyEightTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CrazyEights_COMP4004_A3" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Tester$AcceptanceTests" />
+      <option name="METHOD_NAME" value="FiftyEightTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Tester$AcceptanceTests.SeventyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CrazyEights_COMP4004_A3" />
       <option name="PACKAGE_NAME" value="" />
@@ -59,41 +92,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tester$AcceptanceTests.SixtyEightTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Tester$AcceptanceTests.SeventyTwoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CrazyEights_COMP4004_A3" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="Tester$AcceptanceTests" />
-      <option name="METHOD_NAME" value="SixtyEightTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Tester$AcceptanceTests.SixtyNineTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CrazyEights_COMP4004_A3" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="Tester$AcceptanceTests" />
-      <option name="METHOD_NAME" value="SixtyNineTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Tester$AcceptanceTests.SixtySevenTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CrazyEights_COMP4004_A3" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="Tester$AcceptanceTests" />
-      <option name="METHOD_NAME" value="SixtySevenTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Tester$AcceptanceTests.SixtyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CrazyEights_COMP4004_A3" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="Tester$AcceptanceTests" />
-      <option name="METHOD_NAME" value="SixtyTest" />
+      <option name="METHOD_NAME" value="SeventyTwoTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -101,11 +104,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.Tester$AcceptanceTests" />
+        <item itemvalue="Application.CrazyEightsApplication" />
         <item itemvalue="JUnit.Tester$AcceptanceTests.SeventyTest" />
-        <item itemvalue="JUnit.Tester$AcceptanceTests.SixtyNineTest" />
-        <item itemvalue="JUnit.Tester$AcceptanceTests.SixtyEightTest" />
-        <item itemvalue="JUnit.Tester$AcceptanceTests.SixtyTest" />
-        <item itemvalue="JUnit.Tester$AcceptanceTests.SixtySevenTest" />
+        <item itemvalue="JUnit.Tester$AcceptanceTests.SeventyTwoTest" />
+        <item itemvalue="JUnit.Tester$AcceptanceTests.FiftyEightTest" />
       </list>
     </recent_temporary>
   </component>
@@ -143,10 +146,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="872" y="359" key="#Project_Structure/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670258238179" />
-    <state x="651" y="195" key="#com.intellij.ide.util.MemberChooser" timestamp="1670620083859">
+    <state x="651" y="195" key="#com.intellij.ide.util.MemberChooser" timestamp="1670625051481">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="651" y="195" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1670620083859" />
+    <state x="651" y="195" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1670625051481" />
     <state x="1085" y="402" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670291155289" />
     <state x="646" y="330" width="403" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1670438326187">
       <screen x="0" y="0" width="1536" height="824" />
@@ -166,25 +169,25 @@
     </state>
     <state x="636" y="268" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1670442586359" />
     <state x="1060" y="456" key="FileChooserDialogImpl/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670261225914" />
-    <state width="1493" height="583" key="GridCell.Tab.0.bottom" timestamp="1670621530773">
+    <state width="1303" height="600" key="GridCell.Tab.0.bottom" timestamp="1670638211991">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="583" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1670621530773" />
+    <state width="1303" height="600" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1670638211991" />
     <state width="2517" height="506" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670292642771" />
-    <state width="1493" height="583" key="GridCell.Tab.0.center" timestamp="1670621530772">
+    <state width="1303" height="600" key="GridCell.Tab.0.center" timestamp="1670638211990">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="583" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1670621530772" />
+    <state width="1303" height="600" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1670638211990" />
     <state width="2517" height="506" key="GridCell.Tab.0.center/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670292642771" />
-    <state width="1493" height="583" key="GridCell.Tab.0.left" timestamp="1670621530772">
+    <state width="1303" height="600" key="GridCell.Tab.0.left" timestamp="1670638211990">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="583" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1670621530772" />
+    <state width="1303" height="600" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1670638211990" />
     <state width="2517" height="506" key="GridCell.Tab.0.left/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670292642771" />
-    <state width="1493" height="583" key="GridCell.Tab.0.right" timestamp="1670621530773">
+    <state width="1303" height="600" key="GridCell.Tab.0.right" timestamp="1670638211990">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="583" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1670621530773" />
+    <state width="1303" height="600" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1670638211990" />
     <state width="2517" height="506" key="GridCell.Tab.0.right/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670292642771" />
     <state width="2517" height="502" key="GridCell.Tab.1.bottom" timestamp="1670274392038">
       <screen x="0" y="0" width="2560" height="1400" />
@@ -214,5 +217,9 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="927" y="316" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.2560.1400/2560.241.1920.1040/-1280.225.1280.680@0.0.2560.1400" timestamp="1670258348311" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1670625400861">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1670625400861" />
   </component>
 </project>

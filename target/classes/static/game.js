@@ -9,7 +9,8 @@ var maxHand = 0; //the maximum hand we can have in the game
 var played = false; //have we played a card?
 var drawCount = 0; //how many cards have we drawn?
 var doneDrawing = false; //if true we have finished our obligatory drawing of cards.
-var twos = 0;
+var twos = 0; //amount of twos played in a row before my turn.
+var hasPlayable = 0; // how many playable cards I have
 const lastMessage = {to:"someone", content:"something"};
 
 function main() {
@@ -66,7 +67,8 @@ function showStatus(message) {
     if (message.content !== "") {
         connectionStage = 3;
         $("#status").html("In Game, Round" + message.round + ", Player" + message.content + "'s turn " + "turn order:" + message.dir + ", next: " + message.next);
-        if (next && (message.content != number)) {
+        //added message.next != number since this alert would go off if someone played twice (which can happen)
+        if (next && (message.content != number) && (message.next != number)) {
             alert("Previous player played a queen or Ace, you were Skipped");
         }
          next = (number == message.next);
@@ -129,10 +131,9 @@ function showGame(message) {
             connectionStage = 5;
             console.log("constructing buttons...");
             $("#cards").empty();
-            var hasPlayable = false;
             for (var i=0; i < message.cardCount; i++) {
                 if (message.playable.includes(i)) {
-                    hasPlayable = true;
+                    hasPlayable++;
                     //this means this card is playable, make it a button
                     $("#cards").append('<button id="card' + (i+1) + '" class="btn btn-default" type="submit">' + message.cards[i] + '</button>');
                     //set click function
@@ -141,28 +142,7 @@ function showGame(message) {
                     $("#cards").append('<p id="card' + (i+1) + '" style="display:inline">' + message.cards[i] + ' </p>');
                 }
             }
-            //create the draw button, maybe
-            if(message.cardCount != maxHand)    {
-                $( "#draw" ).prop( "disabled", false);
-            }
-            if (hasPlayable) {
-                if (drawCount > 0) {
-                    //means we have already drawn, and we must play the first playable card
-                    $( "#draw" ).prop( "disabled", true);
-                }
-            }else if (drawCount == draw) {
-                //if we are picking up twos, we can go beyond this limit:
-                if (twos == 0 || (doneDrawing)) {
-                    $( "#draw" ).prop( "disabled", true);
-                    //no playable card, and we can't draw, end turn
-                    endTurn("end");
-                }
-            }
-            //reset drawcount if we reacted to a two.
-            if ($("#topCard").text()[0] == '2' && drawCount == (2*twos) && !(doneDrawing)) {
-                drawCount = 0;
-                doneDrawing = true;
-            }
+            $( "#draw" ).prop( "disabled", !(message.enableDraw));
             //we don't want to reset all that hard work
             return;
         }
@@ -186,8 +166,8 @@ function setGameInfo(message) {
 
 function playCard(event) {
     var played = true;
-    var response = $("#card" + (event.data.id)).text();
-    if (response[0] == '8') {
+    var res = $("#card" + (event.data.id)).text();
+    if (res[0] == '8') {
         //prompt for a suit
         //add yes and no buttons
         $("#form").append('<button id="S" class="btn btn-default" type="submit">S</button>');
@@ -195,40 +175,45 @@ function playCard(event) {
         $("#form").append('<button id="H" class="btn btn-default" type="submit">H</button>');
         $("#form").append('<button id="D" class="btn btn-default" type="submit">D</button>');
         //set click functions
-        $("#S").click({suit: "S"}, sendSuit());
-        $("#C").click({suit: "C"}, sendSuit());
-        $("#H").click({suit: "H"}, sendSuit());
-        $("#D").click({suit: "D"}, sendSuit());
+        $("#S").click({suit: "S"}, sendSuit);
+        $("#C").click({suit: "C"}, sendSuit);
+        $("#H").click({suit: "H"}, sendSuit);
+        $("#D").click({suit: "D"}, sendSuit);
         //don't want to send a response anyways...
         return;
     }
-    console.log("sending: " + "#card" + (event.data.id)  + " res: "+ response);
+    console.log("sending: " + "#card" + (event.data.id)  + " res: "+ res);
     //send the response as the card string
     //TODO remove the lastmessage shit
     lastMessage.to = "/app/play/" + number;
-    lastMessage.content = {"response":response};
+    lastMessage.content = {"response":res};
     //this will, wait 300 milis, then call waitNextStage
     setTimeout(waitNextStage(connectionStage), 2000);
-    endTurn("" + response);
+    endTurn("" + res);
 }
 
-function setSuit(event) {
+function sendSuit(event) {
     //send response
-    endTurn("" + event.data.suit);
+    endTurn("8" + event.data.suit);
 }
 
 function endTurn(res) {
     //send card or end
     stompClient.send("/app/play/" + number, {}, JSON.stringify({"response": res}));
-    //ending turn
-    $( "#draw" ).prop( "disabled", true);
-    played = false;
-    drawCount = 0;
-    doneDrawing = false;
-    twos = 0;
-    //delete's if exist
-    $("#S").remove();
-    $("#C").remove();
-    $("#H").remove();
-    $("#D").remove();
+    //basically here so that our turn doesn't end until we have played all required cards or a two.
+    if (!(twos > 0 && hasPlayable >= (2*twos)) || res[0] == '2') {
+        //ending turn
+        $( "#draw" ).prop( "disabled", true);
+        response = false;
+        played = false;
+        drawCount = 0;
+        doneDrawing = false;
+        twos = 0;
+        hasPlayable = 0;
+        //delete's if exist
+        $("#S").remove();
+        $("#C").remove();
+        $("#H").remove();
+        $("#D").remove();
+    }
 }
