@@ -24,6 +24,9 @@ function main() {
        stompClient.subscribe('/topic/lobby', function (message) {
               showStatus(JSON.parse(message.body));
        }, {id: "lobby"});
+       stompClient.subscribe('/topic/scores', function (message) {
+                       showScores(JSON.parse(message.body));
+       }, {id: "scores"});
    });
    //set the click func for draw here.
    $("#draw").click(function() {
@@ -69,7 +72,7 @@ function showStatus(message) {
         if (message.content == "over") {
             $("#status").html("Round" + message.round + " over, scoring...");
             if (number == 1) {
-                stompClient.send("/app/lobby/", {}, JSON.stringify({"response":"scores"}));
+                stompClient.send("/app/newRound", {}, JSON.stringify({}));
             }
             return;
         }
@@ -155,6 +158,30 @@ function showGame(message) {
         }
     }
     setGameInfo(message);
+}
+
+function showScores(message) {
+    //coolio, showing scores.
+    if ($("#scores").length == 1) {
+        $("#scores").append('<tr id="label"></tr>');
+        $("#label").append('<th>Round</th>');
+        for (var i = 1; i <= message.players; i++) {
+            $("#label").append('<th>Player' + i + ' Score</th>');
+        }
+    }
+    //now add a row with this data.
+    $("#scores").append('<tr id="Round' + message.round + '"></tr>');
+    $("#Round" + message.round).append('<td>' + message.round + '</td>');
+    $("#Round" + message.round).append('<td>' + message.player1 + '</td>');
+    $("#Round" + message.round).append('<td>' + message.player2 + '</td>');
+    $("#Round" + message.round).append('<td>' + message.player3 + '</td>');
+    if (message.players == 4) {
+        $("#Round" + message.round).append('<td>' + message.player4 + '</td>');
+    }
+    if (number == 1) {
+        //prompt a status update.
+        stompClient.send("/app/host", {}, JSON.stringify({"response":"No"}));
+    }
 }
 
 function setGameInfo(message) {

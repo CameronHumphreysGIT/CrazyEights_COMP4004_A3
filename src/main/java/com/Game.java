@@ -18,7 +18,7 @@ public class Game {
     boolean isLeft;
     int twos;
     ArrayList<String> sequence = new ArrayList<>();
-    int[] scores = new int[4];
+    int[] scores = new int[]{0,0,0,0};
 
     public Game() {
     }
@@ -104,7 +104,29 @@ public class Game {
     }
 
     public void scorePlayers() {
-
+        //fun stuff.
+        for (int i = 0; i < playerCount(); i++) {
+            //start with prev round score.
+            int score = scores[i];
+            for (String card : playerList.get(i).getCards()) {
+                switch (card.charAt(0)) {
+                    case 'A':
+                        score += 1;
+                        break;
+                    case 'K':
+                    case 'J':
+                    case 'Q':
+                        score += 10;
+                        break;
+                    case '8':
+                        score += 50;
+                        break;
+                    default:
+                        score += Integer.parseInt("" + card.charAt(0));
+                }
+            }
+            scores[i] = score;
+        }
     }
 
     public boolean playableSequence(int player) {
@@ -248,5 +270,9 @@ public class Game {
 
     public int getTwos() {
         return twos;
+    }
+
+    public int[] getScores() {
+        return scores;
     }
 }

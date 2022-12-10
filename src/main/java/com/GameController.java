@@ -57,6 +57,13 @@ public class GameController {
         return new StatusMessage(g.playerCount() - 1);
     }
 
+    @MessageMapping("/newRound")
+    @SendTo("/topic/scores")
+    public ScoreMessage scoreUpdate() throws Exception{
+        System.out.println("updating scores!!");
+        return new ScoreMessage(g);
+    }
+
     @MessageMapping("/{playerId}")
     @SendTo("/topic/{playerId}")
     public GameMessage game1(@DestinationVariable("playerId") int pId, ResponseMessage rm) throws Exception {
