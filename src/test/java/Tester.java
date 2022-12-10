@@ -1305,10 +1305,6 @@ class Tester {
             drivers = null;
             gc.reset();
         }
-        //changes:
-        //conditionally cannot draw at all (easy)
-        //must change the isPlayable.
-        //must change endTurn.
         @Test
         @DisplayName("72Test")
         void SeventyTwoTest() {
@@ -1356,6 +1352,60 @@ class Tester {
             assertEquals("In Game, Round1, Player3's turn turn order:left(incrementing), next: 4", drivers[1].findElement(By.id("status")).getText());
             assertEquals("In Game, Round1, Player3's turn turn order:left(incrementing), next: 4", drivers[2].findElement(By.id("status")).getText());
             assertEquals("In Game, Round1, Player3's turn turn order:left(incrementing), next: 4", drivers[3].findElement(By.id("status")).getText());
+            //teardown
+            drivers[0].quit();
+            drivers[1].quit();
+            drivers[2].quit();
+            drivers[3].quit();
+            drivers[0] = null;
+            drivers[1] = null;
+            drivers[2] = null;
+            drivers[3] = null;
+            drivers = null;
+            gc.reset();
+        }
+        @Test
+        @DisplayName("73Test")
+        void SeventyThreeTest() {
+            //have four players join
+            WebDriver[] drivers = fourPlayersJoin(new String[]{"Cam", "Matt", "Alexander", "Cierra"});
+            //set the top card so we can play
+            gc.setTopCard("6C");
+            gc.setCards(new ArrayList<>(Arrays.asList("5D", "2C")), 1);
+            gc.setCards(new ArrayList<>(Arrays.asList("4C", "6C")), 2);
+            gc.refresh();
+            //player 1 plays the 2C
+            drivers[0].findElement(By.xpath("//button[text()='2C']")).click();
+            //player 2 can't draw cards
+            try {
+                assertTrue(drivers[1].findElement(By.id("draw")).isDisplayed());
+            } catch (NoSuchElementException e) {
+                assertTrue(true);
+            }
+            //player 2 can play 4C and 6C
+            try {
+                assertTrue(drivers[1].findElement(By.xpath("//button[text()='4C']")).isDisplayed());
+            } catch (NoSuchElementException e) {
+                fail();
+            }
+            try {
+                assertTrue(drivers[1].findElement(By.xpath("//button[text()='6C']")).isDisplayed());
+            } catch (NoSuchElementException e) {
+                fail();
+            }
+            //play dem cards
+            drivers[1].findElement(By.xpath("//button[text()='6C']")).click();
+            try {
+                assertTrue(drivers[1].findElement(By.id("draw")).isDisplayed());
+            } catch (NoSuchElementException e) {
+                assertTrue(true);
+            }
+            drivers[1].findElement(By.xpath("//button[text()='4C']")).click();
+            //next turn
+            assertEquals("Round1 over, scoring...", drivers[0].findElement(By.id("status")).getText());
+            assertEquals("Round1 over, scoring...", drivers[1].findElement(By.id("status")).getText());
+            assertEquals("Round1 over, scoring...", drivers[2].findElement(By.id("status")).getText());
+            assertEquals("Round1 over, scoring...", drivers[3].findElement(By.id("status")).getText());
             //teardown
             drivers[0].quit();
             drivers[1].quit();
