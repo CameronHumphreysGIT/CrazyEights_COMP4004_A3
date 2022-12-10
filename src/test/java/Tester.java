@@ -163,6 +163,11 @@ class Tester {
             drivers[1].quit();
             drivers[2].quit();
             drivers[3].quit();
+            drivers[0] = null;
+            drivers[1] = null;
+            drivers[2] = null;
+            drivers[3] = null;
+            drivers = null;
             gc.reset();
         }
 
@@ -219,6 +224,11 @@ class Tester {
             drivers[1].quit();
             drivers[2].quit();
             drivers[3].quit();
+            drivers[0] = null;
+            drivers[1] = null;
+            drivers[2] = null;
+            drivers[3] = null;
+            drivers = null;
             gc.reset();
         }
 
@@ -260,6 +270,11 @@ class Tester {
             drivers[1].quit();
             drivers[2].quit();
             drivers[3].quit();
+            drivers[0] = null;
+            drivers[1] = null;
+            drivers[2] = null;
+            drivers[3] = null;
+            drivers = null;
             gc.reset();
         }
 
@@ -296,6 +311,11 @@ class Tester {
             drivers[1].quit();
             drivers[2].quit();
             drivers[3].quit();
+            drivers[0] = null;
+            drivers[1] = null;
+            drivers[2] = null;
+            drivers[3] = null;
+            drivers = null;
             gc.reset();
         }
 
@@ -353,6 +373,11 @@ class Tester {
             drivers[1].quit();
             drivers[2].quit();
             drivers[3].quit();
+            drivers[0] = null;
+            drivers[1] = null;
+            drivers[2] = null;
+            drivers[3] = null;
+            drivers = null;
             gc.reset();
         }
 
@@ -404,6 +429,11 @@ class Tester {
             drivers[1].quit();
             drivers[2].quit();
             drivers[3].quit();
+            drivers[0] = null;
+            drivers[1] = null;
+            drivers[2] = null;
+            drivers[3] = null;
+            drivers = null;
             gc.reset();
         }
         @Test
@@ -429,6 +459,11 @@ class Tester {
             drivers[1].quit();
             drivers[2].quit();
             drivers[3].quit();
+            drivers[0] = null;
+            drivers[1] = null;
+            drivers[2] = null;
+            drivers[3] = null;
+            drivers = null;
             gc.reset();
         }
         @Test
@@ -454,6 +489,11 @@ class Tester {
             drivers[1].quit();
             drivers[2].quit();
             drivers[3].quit();
+            drivers[0] = null;
+            drivers[1] = null;
+            drivers[2] = null;
+            drivers[3] = null;
+            drivers = null;
             gc.reset();
         }
         @Test
@@ -485,6 +525,11 @@ class Tester {
             drivers[1].quit();
             drivers[2].quit();
             drivers[3].quit();
+            drivers[0] = null;
+            drivers[1] = null;
+            drivers[2] = null;
+            drivers[3] = null;
+            drivers = null;
             gc.reset();
         }
         @Test
@@ -515,6 +560,11 @@ class Tester {
             drivers[1].quit();
             drivers[2].quit();
             drivers[3].quit();
+            drivers[0] = null;
+            drivers[1] = null;
+            drivers[2] = null;
+            drivers[3] = null;
+            drivers = null;
             gc.reset();
         }
         @Test
@@ -558,6 +608,11 @@ class Tester {
             drivers[1].quit();
             drivers[2].quit();
             drivers[3].quit();
+            drivers[0] = null;
+            drivers[1] = null;
+            drivers[2] = null;
+            drivers[3] = null;
+            drivers = null;
             gc.reset();
         }
         @Test
@@ -612,6 +667,11 @@ class Tester {
             drivers[1].quit();
             drivers[2].quit();
             drivers[3].quit();
+            drivers[0] = null;
+            drivers[1] = null;
+            drivers[2] = null;
+            drivers[3] = null;
+            drivers = null;
             gc.reset();
         }
         @Test
@@ -677,6 +737,11 @@ class Tester {
             drivers[1].quit();
             drivers[2].quit();
             drivers[3].quit();
+            drivers[0] = null;
+            drivers[1] = null;
+            drivers[2] = null;
+            drivers[3] = null;
+            drivers = null;
             gc.reset();
         }
         @Test
@@ -746,6 +811,11 @@ class Tester {
             drivers[1].quit();
             drivers[2].quit();
             drivers[3].quit();
+            drivers[0] = null;
+            drivers[1] = null;
+            drivers[2] = null;
+            drivers[3] = null;
+            drivers = null;
             gc.reset();
         }
         @Test
@@ -816,6 +886,11 @@ class Tester {
             drivers[1].quit();
             drivers[2].quit();
             drivers[3].quit();
+            drivers[0] = null;
+            drivers[1] = null;
+            drivers[2] = null;
+            drivers[3] = null;
+            drivers = null;
             gc.reset();
         }
         @Test
@@ -866,6 +941,11 @@ class Tester {
             drivers[1].quit();
             drivers[2].quit();
             drivers[3].quit();
+            drivers[0] = null;
+            drivers[1] = null;
+            drivers[2] = null;
+            drivers[3] = null;
+            drivers = null;
             gc.reset();
         }
         @Test
@@ -930,6 +1010,11 @@ class Tester {
             drivers[1].quit();
             drivers[2].quit();
             drivers[3].quit();
+            drivers[0] = null;
+            drivers[1] = null;
+            drivers[2] = null;
+            drivers[3] = null;
+            drivers = null;
             gc.reset();
         }
         @Test
@@ -1005,6 +1090,11 @@ class Tester {
             drivers[1].quit();
             drivers[2].quit();
             drivers[3].quit();
+            drivers[0] = null;
+            drivers[1] = null;
+            drivers[2] = null;
+            drivers[3] = null;
+            drivers = null;
             gc.reset();
         }
         @Test
@@ -1086,6 +1176,11 @@ class Tester {
             drivers[1].quit();
             drivers[2].quit();
             drivers[3].quit();
+            drivers[0] = null;
+            drivers[1] = null;
+            drivers[2] = null;
+            drivers[3] = null;
+            drivers = null;
             gc.reset();
         }
         @Test
@@ -1203,6 +1298,11 @@ class Tester {
             drivers[1].quit();
             drivers[2].quit();
             drivers[3].quit();
+            drivers[0] = null;
+            drivers[1] = null;
+            drivers[2] = null;
+            drivers[3] = null;
+            drivers = null;
             gc.reset();
         }
         //changes:
@@ -1261,6 +1361,11 @@ class Tester {
             drivers[1].quit();
             drivers[2].quit();
             drivers[3].quit();
+            drivers[0] = null;
+            drivers[1] = null;
+            drivers[2] = null;
+            drivers[3] = null;
+            drivers = null;
             gc.reset();
         }
     }
